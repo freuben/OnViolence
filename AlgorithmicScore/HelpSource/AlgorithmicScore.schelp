@@ -1,0 +1,248 @@
+class:: AlgorithmicScore
+summary:: An Algorithmic Score
+related:: Classes/Window
+categories:: GUI>Views
+
+Description::
+
+An algorithmic score
+
+
+classmethods::
+
+method::new
+
+Create a new AlgorithmicScore
+
+instancemethods::
+
+method::score
+
+define a score
+
+argument::clefArray
+Specify types of clefs
+argument::down
+Offset of pixel space going down
+argument::staffGap
+Change gap between staffs
+argument::spacing
+Change spacing between notes
+
+Examples::
+
+code::
+
+//MusicSync: http://www.fontspace.com/robert-allgeyer/musisync (place MusicSync in Libary/Fonts)
+//Sonora: http://christian.texier.pagespro-orange.fr/mididesi/free/index.htm#sonora  (place Sonora.suit in Libary/Fonts)
+
+a = AlgorithmicScore(1.2);
+
+a.score([\treble, \bass, \alto, \tenor], 1, 1.3); //clefArray, down, staffGap, spacing
+
+(
+a.findNotes([[0, [0, 1, 14, 0, 3, 0]], [0, [1, 0, 1, 1, 2, 1]], [0, [2, 1, 0, 2, 0, 2]],
+[1, [0, 0, 7, 1, 0, 1]], [2, [0, 0, 3, 1, 0, 0]], [0, [3, 0, 6, 1, 0, 0]]]); //[pos, [staff, noteType, note, acc, oct, color]];
+)
+
+a.noteAdjust;
+// a.noteAdjust = 37.1;
+
+a.text("ad lib", "Helvetica", color: Color.rand) //arg are string, letterType, letterSize, color, widthAdj, heightAdj
+
+a.textClose
+
+a.score([\bass, \treble, \treble], 1, 1.3);
+
+~staff1 = [[0, [0, 1, "c3"]], [1, [0, 0, "b3", \flat, \blue]]]; //[pos, [staff, noteType, note, acc, color]]
+~staff2 = [[0, [1, 0, "d5", \flat]]];
+~staff3 = [[0, [2, 1, "a3", \nat, \red]]];
+
+a.enharmonic(~staff1 ++ ~staff2 ++ ~staff3);
+
+a.text("Improvise with pitch material", "Helvetica", 60, Color.rand,-0.5,0.5); //string, font, letterSize, inLeft, inTop, letterAdj, color
+
+a.close;
+
+a = AlgorithmicScore(0.8, "AlgoScore");
+
+a.score([\treble], 2.0, 1.2, 2.0);
+
+a.noteAdjust = -11.0;
+
+a.enharmonic([[0, [0, 1, "e4", \flat]], [1, [0, 0, "d4", \nat]], [2, [0, 0, "b3", \nat]], [3, [0, 0, "e3", \flat]], [4, [0, 0, "f4", \nat]], [5, [0, 0, "c5", \sharp]], [6, [0, 1, "e6", \nat]], [7, [0, 1, "c7", \sharp]], [8, [0, 1, "d8", \flat]]];); //[pos, [staff, noteType, note, acc, color]];
+
+a.expression("p", letterSize: 80, widthAdj:0.15, heightAdj: 1.4)
+
+
+a.close;
+
+a = AlgorithmicScore.screenBounds;
+
+//an image or movie:
+a.playMovie("/Users/fr155035/Pictures/music/music/1.jpg", 2938/5,4013/5); //path, pixel1, pixel2
+
+a.image("/Users/fr155035/Pictures/music/music/1.jpg", 1/5); //path, pixel1, pixel2
+
+a.imageCenter("/Users/fr155035/Pictures/music/music/1.jpg", 1/5); //path, pixel1, pixel2
+
+a.w.refresh;
+
+a.score([\treble, \treble, \bass]); //clefArray
+
+~staff1 = [[0, [0, 0, "c#4"]], [1, [0, 0, "c#5", \red]], [2, [0, 0, "e6"]]]; //[pos, [staff, noteType, note, acc, color]]
+~staff2 = [[0, [1, 0, "d4"]], [1, [1, 0, "b3"]], [2, [1, 0, "f#4", \blue]]];
+~staff3 = [[0, [2, 0, "b2"]], [1, [2, 0, "d3"]], [2, [2, 0, "g#2"]]];
+
+a.chromatic(~staff1 ++ ~staff2 ++ ~staff3); //[pos, [staff, noteType, note, color]]
+
+a.close;
+
+a = AlgorithmicScore(1.2);
+
+a.score([\piano, \piano], 1, 1.3); //clefArray, down, staffGap, spacing
+
+~staff1 = [[0, [0, 0, "c5", \sharp, \black]], [0, [0, 0, "b2", \flat, \red]], [1, [0, 0, "e6", \nat, \black]]];
+~staff2 = [[0, [1, 0, "f2", \sharp, \blue]], [1, [1, 0, "e4", \flat, \black]], [2, [1, 0, "b4", \nat, \red]]];
+a.enharmonic(~staff1 ++ ~staff2);
+
+a.score([\piano], 1, 1.3); //clefArray, down, staffGap, spacing
+
+~staff1 = ~staff1 = [[0, [0, 1, "c#4", \black]], [0, [0, 1, "a#2", \red]], [1, [0, 1, "e6",\black]]];
+a.chromatic(~staff1);
+~staff2 = [[0, [0, 0, "f#2", \blue]], [1, [0, 0, "d#4", \black]], [2, [0, 0, "b4", \red]]];
+a.chromatic(~staff2);
+
+a.note(60, 0, \red); //midiNum, pos, color, staff, noteType
+a.note(50, 1, noteType: 1);
+a.note(20, 2, \blue, noteType: 1);
+
+a.notes([60, 61, 62]);
+a.notes([60, 50, 20], [0,1,1], [\black, \blue]); //midiNum, pos, color, staff, noteType
+
+(
+~notes = (60,61..72).scramble; //random notes
+a.notes(~notes);
+)
+
+a.notes(~notes-7);
+
+a.close;
+
+a = AlgorithmicScore(1.2);
+
+a.score([\piano], 1, 1.3);
+
+s.boot;
+
+//from James McCartney synth piano
+(
+SynthDef("synthPiano", {arg note = 36, out=0, legato=6, amp=1;
+var delayTime, detune, strike, hammerEnv, hammer, signal, env;
+env = EnvGen.kr(Env.linen(0.01, legato, 0.1), doneAction:2);
+hammerEnv = Decay2.ar(Impulse.ar(0.1), 0.008, 0.04);
+signal = Mix.ar(Array.fill(3, { arg i;
+detune = #[-0.05, 0, 0.04].at(i);
+delayTime = 1 / (note + detune).midicps;
+hammer = LFNoise2.ar(3000, hammerEnv);
+CombL.ar(hammer, delayTime, delayTime, legato) }));
+Out.ar(out, Pan2.ar(signal*env, (note - 36)/27 - 1, amp));
+}).send(s);
+)
+
+(
+var notes=(60,61..76), color, index=0;
+color = Array.fill(notes.size, \black);
+r = Task({inf.do({ notes.size.do({
+a.notes(notes, color:color.insert(index, \red));
+Synth("synthPiano", [\note, notes[index], \legato, rrand(1.4,1.8)]);
+0.3.yield;
+color = Array.fill(notes.size, \black);
+index = index + 1;
+});
+index = 0;
+});
+}).play( a.clock );
+)
+
+r.stop;
+r.resume;
+r.stop;
+
+//some notation fun
+
+(
+var pos=(0,1..17), note;
+r = Task({inf.do({ 18.do({
+note = rrand(38,59);
+a.notes([note, rrand(60,83)], [pos.choose, pos.choose], [[\blue, \red].choose, \black]);
+Synth("synthPiano", [\note, note, \legato, rrand(0.5,1.0)]);
+rrand(0.1,0.2).yield;
+});
+});
+}).play( a.clock );
+)
+
+r.stop;
+
+~func = {arg choise=1, note=69; if(choise == 1, {Synth("synthPiano", [\note, note, \legato, rrand(0.5,1.0)]);})}
+~choise = 0;
+
+(
+var dif = 0, notes, colors;
+r= Task({inf.do({6.do({
+35.do({
+notes = Array.fill(6,{rrand(41,82)}).scramble;
+colors = Array.fill(6,{[\black, \red, \blue, \black].choose});
+a.notes(notes, [0,1,2,3,4,5]*dif, colors);
+
+dif = dif + 0.3;
+~choise = dif.linlin(0,25,0,1.0);
+~func.value([0, 1].wchoose([~choise,~choise-1]), notes.choose);
+rrand(0.07,0.01).yield;
+});
+30.do({
+notes = Array.fill(6,{rrand(38,83)}).scramble;
+colors = Array.fill(6,{[\black, \red, \blue, \black].choose});
+~choise = dif.linlin(0,25,0,1.0);
+~func.value([0, 1].wchoose([~choise,~choise-1]), notes.choose);
+a.notes(notes, [0,1,2,3,4,5]*dif, colors);
+
+dif = dif - 0.3;
+rrand(0.07,0.01).yield;
+});
+});
+dif = 0;
+});
+}).play( a.clock );
+)
+
+r.stop;
+
+////////////////////////////////////////////////////////
+
+//get spectral info and put it in algorithmic score
+
+p = PartialTracker(512, 5, 1, 2, 3);
+p.startsynth(1);
+p.getarrays;
+p.numpartials(16);
+
+~notes = p.frequencies.cpsmidi.round(1);
+~pos = (0,1..16);
+~acc = Array.fill(~notes.size, 0);
+
+a.notes(~notes, ~pos, ~acc);
+
+a.notes(~notes.scramble, ~pos, ~acc);
+
+~notes = p.frequencies.cpsmidi.round(1);
+
+a.notes(~notes, ~pos, ~acc);
+
+a.close;
+
+////////////////////////////////////////////////////////
+
+
+::
