@@ -47,8 +47,9 @@ a.findNotes([[0, [0, 1, 14, 0, 3, 0]], [0, [1, 0, 1, 1, 2, 1]], [0, [2, 1, 0, 2,
 
 a.noteAdjust;
 // a.noteAdjust = 37.1;
+a.w.front;
 
-a.text("ad lib", "Helvetica", color: Color.rand) //arg are string, letterType, letterSize, color, widthAdj, heightAdj
+a.text("ad lib", "Helvetica", 90, 0.1, color: Color.rand) //arg are string, letterType, letterSize, color, widthAdj, heightAdj
 
 a.textClose
 
@@ -60,7 +61,7 @@ a.score([\bass, \treble, \treble], 1, 1.3);
 
 a.enharmonic(~staff1 ++ ~staff2 ++ ~staff3);
 
-a.text("Improvise with pitch material", "Helvetica", 60, Color.rand,-0.5,0.5); //string, font, letterSize, inLeft, inTop, letterAdj, color
+a.text("Improvise with pitch material", "Helvetica", 60, 2.0,0.5, Color.rand); //arg string, letterType, letterSiz, widthAdj = 0, heightAdj = 0.1, color=Color.black;
 
 a.close;
 
@@ -68,7 +69,7 @@ a = AlgorithmicScore(0.8, "AlgoScore");
 
 a.score([\treble], 2.0, 1.2, 2.0);
 
-a.noteAdjust = -11.0;
+/*a.noteAdjust = -11.0;*/
 
 a.enharmonic([[0, [0, 1, "e4", \flat]], [1, [0, 0, "d4", \nat]], [2, [0, 0, "b3", \nat]], [3, [0, 0, "e3", \flat]], [4, [0, 0, "f4", \nat]], [5, [0, 0, "c5", \sharp]], [6, [0, 1, "e6", \nat]], [7, [0, 1, "c7", \sharp]], [8, [0, 1, "d8", \flat]]];); //[pos, [staff, noteType, note, acc, color]];
 
@@ -80,9 +81,9 @@ a.close;
 a = AlgorithmicScore.screenBounds;
 
 //an image or movie:
-a.playMovie("/Users/fr155035/Pictures/music/music/1.jpg", 2938/5,4013/5); //path, pixel1, pixel2
+/*a.playMovie("/Users/fr155035/Pictures/music/music/1.jpg", 2938/5,4013/5); //path, pixel1, pixel2*/
 
-a.image("/Users/fr155035/Pictures/music/music/1.jpg", 1/5); //path, pixel1, pixel2
+a.image("/Users/federicoreuben/Pictures/music/Orwell2.png", 4, tile:10); //path, pixel1, pixel2
 
 a.imageCenter("/Users/fr155035/Pictures/music/music/1.jpg", 1/5); //path, pixel1, pixel2
 

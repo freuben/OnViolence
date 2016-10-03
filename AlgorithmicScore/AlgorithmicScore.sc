@@ -66,14 +66,14 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 		}.defer;
 	}
 
-	image {arg pathName, scale, above=nil;
-		var pix1, pix2;
+	image {arg pathName, scale, above=nil, tile=1, alpha=1;
+		var pix1, pix2, rect;
 		if(movie.notNil, {this.removeMovie});
 		if(picture.notNil, {this.removeImage});
 		if((windowType == nil).or(windowType == 0), {this.clearWindow});
 		pathName = pathName ?? { "/DeskTop/test.mov" };
 		windowType = 1;
-		picture = SCImage.new(pathName);
+		picture = Image.open(pathName);
 		if(picture.notNil, {
 			pix1 = picture.width*scale;
 			pix2 = picture.height*scale;
@@ -95,13 +95,13 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 		if(movie.notNil, {this.removeMovie});
 		if(picture.notNil, {this.removeImage});
 		if((windowType == nil).or(windowType == 0), {this.clearWindow});
-		picture = SCImage.new(pathName);
+		picture = Image.open(pathName);
 		pix1 = picture.width*scale;
 		pix2 = picture.height*scale;
 		pathName = pathName ?? { "/DeskTop/test.mov" };
 		windowType = 1;
 		w.drawFunc_({
-			� � � � picture.drawInRect(Rect((w.bounds.asArray[2]-pix1/2),(w.bounds.asArray[3]-pix2/2),pix1,pix2),picture.bounds,1,1);
+			picture.drawInRect(Rect((w.bounds.asArray[2]-pix1/2),(w.bounds.asArray[3]-pix2/2),pix1,pix2),picture.bounds,1,1);
 		});
 		w.refresh;
 	}
@@ -749,7 +749,9 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 		textArr = w.bounds.asArray;
 		widthPos = (((textArr[2]-textWidth)/2)*widthAdj);
 		heightPos = (((textArr[3]-textHeight)/2)*heightAdj.linlin(0,2,2,0));
-		text.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
+		text.bounds_(Rect(widthPos, heightPos, textWidth, textHeight))
+		.font_(Font(letterType, sizeLetter))
+		.string_(string).stringColor_(color).align_(\centered);
 	}
 
 	text2 {arg string="Hello", letterType="Helvetica", letterSize=90, widthAdj = 0, heightAdj = 0.1, color=Color.black;
