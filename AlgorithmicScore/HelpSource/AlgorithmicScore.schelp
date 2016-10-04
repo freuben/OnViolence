@@ -29,6 +29,7 @@ Change gap between staffs
 argument::spacing
 Change spacing between notes
 
+
 Examples::
 
 code::
@@ -83,9 +84,10 @@ a = AlgorithmicScore.screenBounds;
 //an image or movie:
 /*a.playMovie("/Users/fr155035/Pictures/music/music/1.jpg", 2938/5,4013/5); //path, pixel1, pixel2*/
 
-a.image("/Users/federicoreuben/Pictures/music/Orwell2.png", 4, tile:10); //path, pixel1, pixel2
 
-a.imageCenter("/Users/fr155035/Pictures/music/music/1.jpg", 1/5); //path, pixel1, pixel2
+a.image("/Users/federicoreuben/Pictures/music/Orwell2.png", 1, 40); //path, pixel1, pixel2
+
+a.imageCenter("/Users/federicoreuben/Pictures/music/Orwell2.png", 1/2); //path, pixel1, pixel2
 
 a.w.refresh;
 
