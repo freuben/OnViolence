@@ -1,6 +1,8 @@
 AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, <>g, <>func2, extra;
 	var octava, <>down, n, taskOn, clickColor1, white1, clickColor2, white2, clickColor3, white3;
-	var clickColor4, white4, taskOn2, synth, synth2, trebleClef, bassClef, altoClef, <>movie; 	var <>picture, x, y, <>staffArr, <>clefArr, clefFunc, <>storeArrayClef, <>pianoArray, drawLines; 	var <>staffGap, windowType=1, <>spacing, <>noteAdjust, clearStaffArr,<>clock, text, text2;
+	var clickColor4, white4, taskOn2, synth, synth2, trebleClef, bassClef, altoClef, <>movie;
+	var <>picture, x, y, <>staffArr, <>clefArr, clefFunc, <>storeArrayClef, <>pianoArray, drawLines;
+	var <>staffGap, windowType=1, <>spacing, <>noteAdjust, clearStaffArr,<>clock, text, text2;
 	var <>express, <>tagWindow, <>stopWatchWindow, <>stopWatchRoutine;
 
 	*new {arg firstResize=1.5, string="score";
@@ -847,14 +849,16 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 
 	click2 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click2";
 		if(w3.notNil, {w3.close});
-		w3 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
-			(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
+		w3 = Window(name,
+			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
+				(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
 		w3.view.background_( Color.white );
 		white2 = {if(w3.notNil, {
 			w3.drawFunc = {
 				Pen.color = Color.new255(238, 233, 233);
-				Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
-					(230*resize)*winAdj ) );
+				Pen.fillOval(
+					Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+						(230*resize)*winAdj ) );
 			};
 			w3.refresh;
 		});
@@ -863,8 +867,9 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 			if(w3.notNil, {
 				w3.drawFunc = {
 					Pen.color = Color.new255(255, 99, 71).alpha_(alpha);
-					Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
-						(230*resize)*winAdj ) );
+					Pen.fillOval(
+						Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+							(230*resize)*winAdj ) );
 				};
 				w3.refresh;});
 		};
@@ -900,14 +905,16 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	//two more clicks
 	click3 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click3";
 		if(w4.notNil, {w4.close});
-		w4 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
-			(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
+		w4 = Window(name,
+			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
+				(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
 		w4.view.background_( Color.white );
 		white3 = {if(w4.notNil, {
 			w4.drawFunc = {
 				Pen.color = Color.new255(238, 233, 233);
-				Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
-					(230*resize)*winAdj ) );
+				Pen.fillOval(
+					Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+						(230*resize)*winAdj ) );
 			};
 			w4.refresh;
 		});
@@ -916,8 +923,9 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 			if(w4.notNil, {
 				w4.drawFunc = {
 					Pen.color = Color.new255(80, 130, 30).alpha_(alpha);
-					Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
-						(230*resize)*winAdj ) );
+					Pen.fillOval(
+						Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+							(230*resize)*winAdj ) );
 				};
 				w4.refresh;});
 		};
@@ -954,15 +962,17 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 
 	click4 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, scaleSize=1, name="click4";
 		if(w5.notNil, {w5.close});
-		w5 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
-			(winAdd*resize), (250*(resize*scaleSize))*winAdj, (250*(resize*scaleSize))*winAdj ),
-		border: border).front;
+		w5 = Window(name,
+			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
+				(winAdd*resize), (250*(resize*scaleSize))*winAdj, (250*(resize*scaleSize))*winAdj ),
+			border: border).front;
 		w5.view.background_( Color.white );
 		white4 = {if(w5.notNil, {
 			w5.drawFunc = {
 				Pen.color = Color.new255(238, 233, 233);
-				Pen.fillOval( Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj,
-					(230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
+				Pen.fillOval(
+					Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj,
+						(230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
 			};
 			w5.refresh;
 		});
@@ -971,8 +981,9 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 			if(w5.notNil, {
 				w5.drawFunc = {
 					Pen.color = Color.new255(0, 100, 140).alpha_(alpha);
-					Pen.fillOval( Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj,
-						(230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
+					Pen.fillOval(
+						Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj,
+							(230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
 				};
 				w5.refresh;});};
 		white4.value;

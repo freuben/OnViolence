@@ -1,4 +1,9 @@
-AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, <>g, <>func2, extra, octava, <>down, n, taskOn, clickColor1, white1, clickColor2, white2, clickColor3, white3, clickColor4, white4, taskOn2, synth, synth2, trebleClef, bassClef, altoClef, <>movie, <>picture, x, y, <>staffArr, <>clefArr, clefFunc, <>storeArrayClef, <>pianoArray, drawLines, <>staffGap, windowType=1, <>spacing, <>noteAdjust, clearStaffArr,<>clock, text, text2, <>express, <>tagWindow, <>stopWatchWindow, <>stopWatchRoutine;
+AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, <>g, <>func2, extra;
+	var octava, <>down, n, taskOn, clickColor1, white1, clickColor2, white2, clickColor3, white3;
+	var clickColor4, white4, taskOn2, synth, synth2, trebleClef, bassClef, altoClef, <>movie;
+	var <>picture, x, y, <>staffArr, <>clefArr, clefFunc, <>storeArrayClef, <>pianoArray, drawLines;
+	var <>staffGap, windowType=1, <>spacing, <>noteAdjust, clearStaffArr,<>clock, text, text2;
+	var <>express, <>tagWindow, <>stopWatchWindow, <>stopWatchRoutine;
 
 	*new {arg firstResize=1.5, string="score";
 		^super.new.init(firstResize, string);
@@ -20,7 +25,8 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		this.firstFunc(w);
 	}
 
-	*screenSet {arg string="score", left=0, top=0, width=1366, height=768, firstResize=1.4266666666667;
+	*screenSet {arg string="score", left=0, top=0,
+		width=1366, height=768, firstResize=1.4266666666667;
 		^super.new.init3(string, left, top, width, height, firstResize);
 	}
 
@@ -79,7 +85,9 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 			pix2 = picture.height*scale;
 			if(above == nil, {above = w.bounds.asArray[2]-pix2/18});
 			w.drawFunc_({
-				picture.drawInRect(Rect((w.bounds.asArray[2]-pix1/2), above, pix1, pix2),picture.bounds,1,1);
+				picture.drawInRect(
+					Rect((w.bounds.asArray[2]-pix1/2), above, pix1, pix2),
+					picture.bounds,1,1);
 			});
 			w.refresh;
 		});
@@ -101,7 +109,9 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		pathName = pathName ?? { "/DeskTop/test.mov" };
 		windowType = 1;
 		w.drawFunc_({
-			picture.drawInRect(Rect((w.bounds.asArray[2]-pix1/2),(w.bounds.asArray[3]-pix2/2),pix1,pix2),picture.bounds,1,1);
+			picture.drawInRect(
+				Rect((w.bounds.asArray[2]-pix1/2),(w.bounds.asArray[3]-pix2/2),pix1,pix2),
+				picture.bounds,1,1);
 		});
 		w.refresh;
 	}
@@ -151,7 +161,9 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 				{item == \tenor} {clef = altoClef; adjClef = -17;};
 
 				if(item.notNil,
-					{staffArr = staffArr.add( StaticText( w, Rect( 38*resize, ((3.9+adjClef+down)+step1)*resize, (170+step2)*resize, 100*resize )).string_( clef ));
+					{staffArr = staffArr.add( StaticText( w,
+						Rect( 38*resize, ((3.9+adjClef+down)+step1)*resize,
+							(170+step2)*resize, 100*resize )).string_( clef ));
 						clearStaffArr = staffArr;
 						fontArr = fontArr.add( item );
 				});
@@ -173,7 +185,12 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 			});
 		};
 
-		drawLines = {arg color=\black; clefArr.do({|item, index| if(item.notNil, {func.value(((index*staffGap)+1), resize, resize2, color);}); });};
+		drawLines = {arg color=\black;
+			clefArr.do({|item, index|
+				if(item.notNil, {
+					func.value(((index*staffGap)+1), resize, resize2, color);
+				});
+		});};
 
 	}
 
@@ -226,7 +243,10 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		var newArr;
 		pianoArray = arrayClef;
 		newArr = [];
-		arrayClef.do({|item| if(item == \piano, {newArr = newArr.add([\treble, \bass])}, {newArr = newArr.add(item) }); });
+		arrayClef.do({|item| if(item == \piano, {
+			newArr = newArr.add([\treble, \bass])
+		}, {
+			newArr = newArr.add(item) }); });
 		newArr = newArr.flat;
 
 		this.newScore(newArr, adjDown, adjStaffGap, adjSpacing);
@@ -315,7 +335,9 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 			noteHeight = ((note * -1) + 7);
 			noteHeight = noteHeight + (((16*staffGap)*staff));
 			noteHeight = noteHeight*resize;
-			newArray = newArray.add({penFunc.value(symbol, (pos*step), noteHeight, color, 45);});
+			newArray = newArray.add({
+				penFunc.value(symbol, (pos*step), noteHeight, color, 45);
+			});
 
 			case
 			{acc == 1} {newArray = newArray.add({
@@ -440,9 +462,11 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		this.findNotes(newArray);
 	}
 
-	findEnharmonic {arg array = [[0, [1, 0, "c4", \sharp, \black]], [0, [0, 0, "c5", \flat, \black]]];
+	findEnharmonic {arg array = [[0, [1, 0, "c4", \sharp, \black]],
+		[0, [0, 0, "c5", \flat, \black]]];
 		//array[pos, [staff, noteType, noteName, accidental, color]]
-		var count, newArray, pos, staff, noteType, noteName, color, white, midiNote, noteClass, octave, oct, note, acc, accidental, col;
+		var count, newArray, pos, staff, noteType, noteName, color, white, midiNote;
+	var noteClass, octave, oct, note, acc, accidental, col;
 		count = 0;
 		newArray = [];
 
@@ -496,65 +520,70 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 			{(note < -6).and(note >= -12)} {note = note + 7; oct = 2}
 			{note < -13} {note = note + 14; oct = 4};
 
-			newArray = newArray.add([pos, [staff, noteType, note, acc, oct, col]]); //[pos, [staff, noteType, note, acc, oct, color]];
+			newArray = newArray.add([pos, [staff, noteType, note, acc, oct, col]]);
+		//[pos, [staff, noteType, note, acc, oct, color]];
 			count = count + 1;
 		});
 
 		this.findNotes(newArray);
 	}
 
-	enharmonic {arg array = [[0, [1, 0, "c4", \sharp, \black]], [0, [0, 0, "c5", \flat, \black]], [1, [0, 0, "e6", \nat, \black]]];
-		var count, newArray, pos, staff, noteType, noteName, color, accidental, newStaff, adjStaff;
-		count = 0;
-		newArray = [];
+	enharmonic {arg array = [[0, [1, 0, "c4", \sharp, \black]],
+		[0, [0, 0, "c5", \flat, \black]], [1, [0, 0, "e6", \nat, \black]]];
+	var count, newArray, pos, staff, noteType, noteName, color, accidental;
+	var newStaff, adjStaff;
+	count = 0;
+	newArray = [];
 
-		array.size.do({
-			pos = array[count][0];
-			staff = array[count][1][0];
-			noteType = array[count][1][1];
-			noteName = array[count][1][2];
-			accidental = array[count][1][3];
-			color = array[count][1][4];
+	array.size.do({
+		pos = array[count][0];
+		staff = array[count][1][0];
+		noteType = array[count][1][1];
+		noteName = array[count][1][2];
+		accidental = array[count][1][3];
+		color = array[count][1][4];
 
-			if(pianoArray[staff] == \piano, {
-				if(noteName.cnotemidi < 60, {newStaff = 1}, {newStaff = 0});
-			}, {newStaff = 0});
+		if(pianoArray[staff] == \piano, {
+			if(noteName.cnotemidi < 60, {newStaff = 1}, {newStaff = 0});
+		}, {newStaff = 0});
 
-			if(pianoArray[staff-1] != \piano, {adjStaff = (staff*1);}, {
-				adjStaff = (staff*2);});
+		if(pianoArray[staff-1] != \piano, {adjStaff = (staff*1);}, {
+			adjStaff = (staff*2);});
 
-			newArray = newArray.add([pos, [newStaff+adjStaff, noteType, noteName, accidental, color]]);
-			count = count + 1;
-		});
+		newArray = newArray.add([pos, [newStaff+adjStaff, noteType, noteName, accidental, color]]);
+		count = count + 1;
+	});
 
-		this.findEnharmonic(newArray);
+	this.findEnharmonic(newArray);
 
 	}
 
-	chromatic {arg array = [[0, [1, 0, "c#4", 0]], [0, [0, 0, "c#5", 1]], [1, [0, 0, "e6", 0]]]; //	[pos, [staff, noteType, noteName, color]]
-		var count, newArray, pos, staff, noteType, noteName, color, newStaff, adjStaff;
-		count = 0;
-		newArray = [];
+	chromatic {arg array = [[0, [1, 0, "c#4", 0]], [0, [0, 0, "c#5", 1]],
+		[1, [0, 0, "e6", 0]]];
+	//	[pos, [staff, noteType, noteName, color]]
+	var count, newArray, pos, staff, noteType, noteName, color, newStaff, adjStaff;
+	count = 0;
+	newArray = [];
 
-		array.size.do({
-			pos = array[count][0];
-			staff = array[count][1][0];
-			noteType = array[count][1][1];
-			noteName = array[count][1][2];
-			color = array[count][1][3];
+	array.size.do({
+		pos = array[count][0];
+		staff = array[count][1][0];
+		noteType = array[count][1][1];
+		noteName = array[count][1][2];
+		color = array[count][1][3];
 
-			if(pianoArray[staff] == \piano, {
-				if(noteName.cnotemidi < 60, {newStaff = 1}, {newStaff = 0});
-			}, {newStaff = 0});
+		if(pianoArray[staff] == \piano, {
+			if(noteName.cnotemidi < 60, {newStaff = 1}, {newStaff = 0});
+		}, {newStaff = 0});
 
-			if(pianoArray[staff-1] != \piano, {adjStaff = (staff*1);}, {
-				adjStaff = (staff*2);});
+		if(pianoArray[staff-1] != \piano, {adjStaff = (staff*1);}, {
+			adjStaff = (staff*2);});
 
-			newArray = newArray.add([pos, [newStaff+adjStaff, noteType, noteName, color]]);
-			count = count + 1;
-		});
+		newArray = newArray.add([pos, [newStaff+adjStaff, noteType, noteName, color]]);
+		count = count + 1;
+	});
 
-		this.findChromatic(newArray);
+	this.findChromatic(newArray);
 
 	}
 
@@ -585,7 +614,8 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 			if(noteType[count].notNil, {typeNote = noteType[count]}, {typeNote = 0});
 			if(color[count].notNil, {whichColor = color[count]}, {whichColor = \black});
 
-			array = array.add([position, [whichStaff, typeNote, midiNote[count].midicnote, color[count]]]);
+			array = array.add([position, [whichStaff, typeNote,
+				midiNote[count].midicnote, color[count]]]);
 			count = count+1;
 		});
 
@@ -647,13 +677,16 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 
 	click1 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click1";
 		if(w2.notNil, {w2.close});
-		w2 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
+		w2 = Window(name,
+			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize),
+				(250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
 		w2.view.background_( Color.white );
 		white1 = {
 			if(w2.notNil, {
 				w2.drawFunc = {
 					Pen.color = Color.new255(238, 233, 233);
-					Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+					Pen.fillOval( Rect( (10*resize)*winAdj,
+						(10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
 				};
 				w2.refresh;
 			});
@@ -662,7 +695,8 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 			if(w2.notNil, {
 				w2.drawFunc = {
 					Pen.color = Color.new255(255, 255, 0).alpha_(alpha);
-					Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+					Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj,
+						(230*resize)*winAdj, (230*resize)*winAdj ) );
 				};
 				w2.refresh;});
 		};
@@ -675,11 +709,13 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		var timerWindow, oldTime, t, numBox;
 		oldTime = newTime;
 		if(timerWindow.notNil, {timerWindow.close});
-		//timerWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((205*rightWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (180*resize)*winAdj ), border: false).front;
 		//timer goes left automatically
-		timerWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((205*rightWin)*resize) + (w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (180*resize)*winAdj ), border: false).front;
+		timerWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((205*rightWin)*resize) +
+			(w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj,
+			(180*resize)*winAdj ), border: false).front;
 		timerWindow.view.background_( Color.white );
-		numBox = NumberBox(timerWindow, Rect( (30*resize)*winAdj, (30*resize)*winAdj, (200*resize)*winAdj, (110*resize)*winAdj));
+		numBox = NumberBox(timerWindow, Rect( (30*resize)*winAdj, (30*resize)*winAdj,
+			(200*resize)*winAdj, (110*resize)*winAdj));
 		numBox.font_(Font("Helvetica", (100*resize)*winAdj));
 		numBox.value = newTime;
 		numBox.action = {arg field; field.value.postln; };
@@ -687,11 +723,12 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		//w.front;
 		timerWindow.front;
 		if(w3.notNil, {w3.front});
-		t = Routine({ (newTime/0.1).do({oldTime = oldTime - 0.1; numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
-			(0.1*clockAdj).yield;
-			if(timerWindow.notNil, {
-				timerWindow.close;
-			});
+		t = Routine({ (newTime/0.1).do({oldTime = oldTime - 0.1;
+			numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
+		(0.1*clockAdj).yield;
+		if(timerWindow.notNil, {
+			timerWindow.close;
+		});
 		}).play(clock);
 
 	}
@@ -701,9 +738,12 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		oldTime = newTime;
 		if(stopWatchWindow.notNil, {stopWatchRoutine.stop; stopWatchWindow.close});
 		//timer goes left automatically
-		stopWatchWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((215*rightWin)*resize) + (w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (295*resize)*winAdj, (180*resize)*winAdj ), border: false).front;
+		stopWatchWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((215*rightWin)*resize) +
+			(w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (295*resize)*winAdj,
+			(180*resize)*winAdj ), border: false).front;
 		stopWatchWindow.view.background_( Color.white );
-		numBox = NumberBox(stopWatchWindow, Rect( (10*resize)*winAdj, (30*resize)*winAdj, (270*resize)*winAdj, (110*resize)*winAdj));
+		numBox = NumberBox(stopWatchWindow, Rect( (10*resize)*winAdj, (30*resize)*winAdj,
+			(270*resize)*winAdj, (110*resize)*winAdj));
 		numBox.font_(Font("Helvetica", (100*resize)*winAdj));
 		numBox.value = newTime;
 		numBox.action = {arg field; field.value.postln; };
@@ -711,16 +751,18 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		//w.front;
 		stopWatchWindow.front;
 		if(w3.notNil, {w3.front});
-		stopWatchRoutine = Routine({ inf.do({oldTime = oldTime + 0.1; numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
-			(0.1*clockAdj).yield;
-			if(stopWatchWindow.notNil, {
-				stopWatchWindow.close;
-			});
+		stopWatchRoutine = Routine({ inf.do({oldTime = oldTime + 0.1;
+			numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
+		(0.1*clockAdj).yield;
+		if(stopWatchWindow.notNil, {
+			stopWatchWindow.close;
+		});
 		}).play(clock);
 
 	}
 
-	tag {arg string="Pedal",letterType="Helvetica", letterSize=60, widthAdj = 1, heightAdj = 0.1;
+	tag {arg string="Pedal",letterType="Helvetica", letterSize=60,
+		widthAdj = 1, heightAdj = 0.1;
 		var tagBox,sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
 		if(tagWindow.notNil, {tagWindow.close});
 		sizeLetter = letterSize*resize;
@@ -729,7 +771,8 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		textArr = w.bounds.asArray;
 		widthPos = (((textArr[2]-textWidth)/2)*widthAdj)+textArr[0];
 		heightPos = (((textArr[3]-textHeight)/2)*heightAdj)+textArr[1];
-		tagWindow = Window("Tag", Rect( widthPos, heightPos, textWidth, textHeight), border: false).front;
+		tagWindow = Window("Tag", Rect( widthPos, heightPos, textWidth,
+			textHeight), border: false).front;
 		tagWindow.view.background_( Color.white );
 		tagBox = StaticText(tagWindow, Rect( 0, 0, textWidth, textHeight));
 		tagBox.font_(Font(letterType, sizeLetter)).string_(string).align_(\centered);
@@ -741,7 +784,8 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		});
 	}
 
-	text {arg string="Hello", letterType="Helvetica", letterSize=90, widthAdj = 0, heightAdj = 0.1, color=Color.black;
+	text {arg string="Hello", letterType="Helvetica", letterSize=90,
+		widthAdj = 0, heightAdj = 0.1, color=Color.black;
 		var sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
 		sizeLetter = letterSize*resize;
 		textWidth = string.charPix(sizeLetter);
@@ -749,12 +793,12 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		textArr = w.bounds.asArray;
 		widthPos = (((textArr[2]-textWidth)/2)*widthAdj);
 		heightPos = (((textArr[3]-textHeight)/2)*heightAdj.linlin(0,2,2,0));
-		text.bounds_(Rect(widthPos, heightPos, textWidth, textHeight))
-		.font_(Font(letterType, sizeLetter))
-		.string_(string).stringColor_(color).align_(\centered);
+		text.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(
+			Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
 	}
 
-	text2 {arg string="Hello", letterType="Helvetica", letterSize=90, widthAdj = 0, heightAdj = 0.1, color=Color.black;
+	text2 {arg string="Hello", letterType="Helvetica", letterSize=90, widthAdj = 0,
+		heightAdj = 0.1, color=Color.black;
 		var sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
 		sizeLetter = letterSize*resize;
 		textWidth = string.charPix(sizeLetter);
@@ -762,10 +806,12 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		textArr = w.bounds.asArray;
 		widthPos = (((textArr[2]-textWidth)/2)*widthAdj);
 		heightPos = (((textArr[3]-textHeight)/2)*heightAdj.linlin(0,2,2,0));
-		text2.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
+		text2.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(
+			Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
 	}
 
-	expression {arg string="F", letterType="Sonora", letterSize=120, pos = 1, heightAdj = 1.15, color=Color.black;
+	expression {arg string="F", letterType="Sonora", letterSize=120, pos = 1,
+		heightAdj = 1.15, color=Color.black;
 		var sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
 		sizeLetter = letterSize*resize;
 		textWidth = string.charPix(sizeLetter);
@@ -773,7 +819,8 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 		textArr = w.bounds.asArray;
 		widthPos = ((35*resize*(pos-1))+(75*resize));
 		heightPos = (((textArr[3]-textHeight)/2)*heightAdj.linlin(0,2,2,0));
-		express.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
+		express.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(
+			Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
 	}
 
 	textClose {
@@ -825,12 +872,16 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 
 	click2 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click2";
 		if(w3.notNil, {w3.close});
-		w3 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
+		w3 = Window(name,
+			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
+				(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
 		w3.view.background_( Color.white );
 		white2 = {if(w3.notNil, {
 			w3.drawFunc = {
 				Pen.color = Color.new255(238, 233, 233);
-				Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+				Pen.fillOval(
+					Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+						(230*resize)*winAdj ) );
 			};
 			w3.refresh;
 		});
@@ -839,7 +890,9 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 			if(w3.notNil, {
 				w3.drawFunc = {
 					Pen.color = Color.new255(255, 99, 71).alpha_(alpha);
-					Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+					Pen.fillOval(
+						Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+							(230*resize)*winAdj ) );
 				};
 				w3.refresh;});
 		};
@@ -875,12 +928,16 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 	//two more clicks
 	click3 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click3";
 		if(w4.notNil, {w4.close});
-		w4 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
+		w4 = Window(name,
+			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
+				(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
 		w4.view.background_( Color.white );
 		white3 = {if(w4.notNil, {
 			w4.drawFunc = {
 				Pen.color = Color.new255(238, 233, 233);
-				Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+				Pen.fillOval(
+					Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+						(230*resize)*winAdj ) );
 			};
 			w4.refresh;
 		});
@@ -889,7 +946,9 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 			if(w4.notNil, {
 				w4.drawFunc = {
 					Pen.color = Color.new255(80, 130, 30).alpha_(alpha);
-					Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+					Pen.fillOval(
+						Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+							(230*resize)*winAdj ) );
 				};
 				w4.refresh;});
 		};
@@ -926,12 +985,17 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 
 	click4 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, scaleSize=1, name="click4";
 		if(w5.notNil, {w5.close});
-		w5 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*(resize*scaleSize))*winAdj, (250*(resize*scaleSize))*winAdj ), border: border).front;
+		w5 = Window(name,
+			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
+				(winAdd*resize), (250*(resize*scaleSize))*winAdj, (250*(resize*scaleSize))*winAdj ),
+			border: border).front;
 		w5.view.background_( Color.white );
 		white4 = {if(w5.notNil, {
 			w5.drawFunc = {
 				Pen.color = Color.new255(238, 233, 233);
-				Pen.fillOval( Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
+				Pen.fillOval(
+					Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj,
+						(230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
 			};
 			w5.refresh;
 		});
@@ -940,7 +1004,9 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 			if(w5.notNil, {
 				w5.drawFunc = {
 					Pen.color = Color.new255(0, 100, 140).alpha_(alpha);
-					Pen.fillOval( Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
+					Pen.fillOval(
+						Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj,
+							(230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
 				};
 				w5.refresh;});};
 		white4.value;
@@ -1004,14 +1070,3 @@ AlgorithmicScoreQt {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5
 	}
 
 }
-
-//+ SCView {
-//remove {
-//		if(dataptr.notNil,{
-//			parent.prRemoveChild(this);
-//			this.prRemove;
-//			this.prClose;
-//		});
-//	}
-//
-//}
