@@ -12,5 +12,12 @@
 		midi = (this + 0.5).asInteger;
 		^((midi.div(division))-(12/division)).round(1).linlin(0,127,0,127);
 	}
+	
+	midicnote {
+		var midi, notes;
+		midi = (this + 0.5).asInteger;
+		notes = ["c ", "c#", "d ", "d#", "e ", "f ", "f#", "g ", "g#", "a ", "a#", "b "];
+		^(notes[midi%12] ++ (midi.div(12) - 1));
+	}
 
 }

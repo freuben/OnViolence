@@ -103,7 +103,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	pathName = pathName ?? { "/DeskTop/test.mov" };
 	windowType = 1;
 	w.drawFunc_({
-� � � � picture.drawInRect(Rect((w.bounds.asArray[2]-pix1/2),(w.bounds.asArray[3]-pix2/2),pix1,pix2),picture.bounds,1,1);
+ 		picture.drawInRect(Rect((w.bounds.asArray[2]-pix1/2),(w.bounds.asArray[3]-pix2/2),pix1,pix2),picture.bounds,1,1);
 	});
 	w.refresh;
 	}
