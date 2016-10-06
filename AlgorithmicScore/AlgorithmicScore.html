@@ -5,233 +5,295 @@
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title></title>
 <meta name="Generator" content="Cocoa HTML Writer">
-<meta name="CocoaVersion" content="1138.47">
+<meta name="CocoaVersion" content="1348.17">
 <style type="text/css">
-p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #d5100d}
-p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; min-height: 14.0px}
-p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #132bc3}
-p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco}
-p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #737373}
-p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #008326}
-p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #ff7929}
-span.s1 {color: #000000}
-span.s2 {color: #008326}
-span.s3 {color: #d5100d}
-span.s4 {color: #737373}
-span.s5 {color: #132bc3}
-span.s6 {color: #ff7929}
-span.s7 {color: #1b39f5}
-span.s8 {color: #464ec3}
+p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #d5100d; -webkit-text-stroke: #d5100d}
+p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #000000; -webkit-text-stroke: #000000}
+p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #132bc3; -webkit-text-stroke: #132bc3}
+p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #737373; -webkit-text-stroke: #737373}
+p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #008326; -webkit-text-stroke: #008326}
+p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Monaco; color: #ff7929; -webkit-text-stroke: #ff7929}
+span.s1 {font-kerning: none}
+span.s2 {font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
+span.s3 {font-kerning: none; color: #008326; -webkit-text-stroke: 0px #008326}
+span.s4 {font-kerning: none; color: #d5100d; -webkit-text-stroke: 0px #d5100d}
+span.s5 {font-kerning: none; color: #737373; -webkit-text-stroke: 0px #737373}
+span.s6 {font-kerning: none; color: #132bc3; -webkit-text-stroke: 0px #132bc3}
+span.s7 {font-kerning: none; color: #ff7929; -webkit-text-stroke: 0px #ff7929}
+span.s8 {font-kerning: none; color: #142bc3; -webkit-text-stroke: 0px #142bc3}
+span.s9 {font-kerning: none; color: #1b39f5; -webkit-text-stroke: 0px #1b39f5}
+span.s10 {font-kerning: none; color: #464ec3; -webkit-text-stroke: 0px #464ec3}
 </style>
 </head>
 <body>
-<p class="p1">//MusicSync: http://www.fontspace.com/robert-allgeyer/musisync (place MusicSync in Libary/Fonts)</p>
-<p class="p1">//Sonora: http://christian.texier.pagespro-orange.fr/mididesi/free/index.htm#sonora<span class="Apple-converted-space">  </span>(place Sonora.suit in Libary/Fonts)</p>
-<p class="p2"><br></p>
-<p class="p3"><span class="s1">a = </span>AlgorithmicScore<span class="s1">(1.2);</span></p>
-<p class="p2"><br></p>
-<p class="p1"><span class="s1">a.score([</span><span class="s2">\treble</span><span class="s1">, </span><span class="s2">\bass</span><span class="s1">, </span><span class="s2">\alto</span><span class="s1">, </span><span class="s2">\tenor</span><span class="s1">], 1, 1.3); </span>//clefArray, down, staffGap, spacing</p>
-<p class="p2"><br></p>
-<p class="p4">(</p>
-<p class="p4">a.findNotes([[0, [0, 1, 14, 0, 3, 0]], [0, [1, 0, 1, 1, 2, 1]], [0, [2, 1, 0, 2, 0, 2]],<span class="Apple-converted-space"> </span></p>
-<p class="p4">[1, [0, 0, 7, 1, 0, 1]], [2, [0, 0, 3, 1, 0, 0]], [0, [3, 0, 6, 1, 0, 0]]]); <span class="s3">//[pos, [staff, noteType, note, acc, color]];</span></p>
-<p class="p4">)</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="s1">a.text(</span><span class="s4">"ad lib"</span><span class="s1">, </span><span class="s4">"Helvetica"</span><span class="s1">, color: </span><span class="s5">Color</span><span class="s1">.rand) </span>//arg are string, letterType, letterSize, color, widthAdj, heightAdj<span class="Apple-converted-space"> </span></p>
-<p class="p2"><br></p>
-<p class="p4">a.textClose</p>
-<p class="p2"><br></p>
-<p class="p4">a.score([<span class="s2">\bass</span>, <span class="s2">\treble</span>, <span class="s2">\treble</span>], 1, 1.3);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="s6">~staff1</span><span class="s1"> = [[0, [0, 1, </span><span class="s4">"c3"</span><span class="s1">]], [1, [0, 0, </span><span class="s4">"b3"</span><span class="s1">, </span><span class="s2">\flat</span><span class="s1">, </span><span class="s2">\blue</span><span class="s1">]]]; </span>//[pos, [staff, noteType, note, acc, color]]</p>
-<p class="p4"><span class="s6">~staff2</span> = [[0, [1, 0, <span class="s4">"d5"</span>, <span class="s2">\flat</span>]]];</p>
-<p class="p4"><span class="s6">~staff3</span> = [[0, [2, 1, <span class="s4">"a3"</span>, <span class="s2">\nat</span>, <span class="s2">\red</span>]]];</p>
-<p class="p2"><br></p>
-<p class="p4">a.enharmonic(<span class="s6">~staff1</span> ++ <span class="s6">~staff2</span> ++ <span class="s6">~staff3</span>);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="s1">a.text(</span><span class="s4">"Improvise with pitch material"</span><span class="s1">, </span><span class="s4">"Helvetica"</span><span class="s1">, 60, </span><span class="s5">Color</span><span class="s1">.rand,-0.5,0.5); </span>//string, font, letterSize, inLeft, inTop, letterAdj, color</p>
-<p class="p2"><br></p>
-<p class="p4">a.close;</p>
-<p class="p2"><br></p>
-<p class="p3"><span class="s1">a = </span>AlgorithmicScore<span class="s1">(0.8, </span><span class="s4">"AlgoScore"</span><span class="s1">);</span></p>
-<p class="p2"><br></p>
-<p class="p4">a.score([<span class="s2">\treble</span>], 2.0, 1.2, 2.0);</p>
-<p class="p2"><br></p>
-<p class="p4">a.noteAdjust = -11.0;</p>
-<p class="p2"><br></p>
-<p class="p4">a.enharmonic([[0, [0, 1, <span class="s4">"e4"</span>, <span class="s2">\flat</span>]], [1, [0, 0, <span class="s4">"d4"</span>, <span class="s2">\nat</span>]], [2, [0, 0, <span class="s4">"b3"</span>, <span class="s2">\nat</span>]], [3, [0, 0, <span class="s4">"e3"</span>, <span class="s2">\flat</span>]], [4, [0, 0, <span class="s4">"f4"</span>, <span class="s2">\nat</span>]], [5, [0, 0, <span class="s4">"c5"</span>, <span class="s2">\sharp</span>]], [6, [0, 1, <span class="s4">"e6"</span>, <span class="s2">\nat</span>]], [7, [0, 1, <span class="s4">"c7"</span>, <span class="s2">\sharp</span>]], [8, [0, 1, <span class="s4">"d8"</span>, <span class="s2">\flat</span>]]];); <span class="s3">//[pos, [staff, noteType, note, acc, color]];</span></p>
-<p class="p2"><br></p>
-<p class="p4">a.expression(<span class="s4">"p"</span>, letterSize: 80, widthAdj:0.15, heightAdj: 1.4)</p>
-<p class="p2"><br></p>
-<p class="p2"><br></p>
-<p class="p4">a.close;</p>
-<p class="p2"><br></p>
-<p class="p4">a = <span class="s5">AlgorithmicScore</span>.screenBounds;</p>
-<p class="p2"><br></p>
-<p class="p1">//an image or movie:<span class="Apple-converted-space"> </span></p>
-<p class="p5"><span class="s1">a.playMovie(</span>"/Users/fr155035/Pictures/music/music/1.jpg"<span class="s1">, 2938/5,4013/5); </span><span class="s3">//path, pixel1, pixel2</span></p>
-<p class="p2"><br></p>
-<p class="p5"><span class="s1">a.image(</span>"/Users/fr155035/Pictures/music/music/1.jpg"<span class="s1">, 1/5); </span><span class="s3">//path, pixel1, pixel2</span></p>
-<p class="p2"><br></p>
-<p class="p5"><span class="s1">a.imageCenter(</span>"/Users/fr155035/Pictures/music/music/1.jpg"<span class="s1">, 1/5); </span><span class="s3">//path, pixel1, pixel2</span></p>
-<p class="p2"><br></p>
-<p class="p4">a.w.refresh;</p>
-<p class="p2"><br></p>
-<p class="p6"><span class="s1">a.score([</span>\treble<span class="s1">, </span>\treble<span class="s1">, </span>\bass<span class="s1">]); </span><span class="s3">//clefArray</span></p>
-<p class="p2"><br></p>
-<p class="p4"><span class="s6">~staff1</span> = [[0, [0, 0, <span class="s4">"c#4"</span>]], [1, [0, 0, <span class="s4">"c#5"</span>, <span class="s2">\red</span>]], [2, [0, 0, <span class="s4">"e6"</span>]]]; <span class="s3">//[pos, [staff, noteType, note, acc, color]]</span></p>
-<p class="p4"><span class="s6">~staff2</span> = [[0, [1, 0, <span class="s4">"d4"</span>]], [1, [1, 0, <span class="s4">"b3"</span>]], [2, [1, 0, <span class="s4">"f#4"</span>, <span class="s2">\blue</span>]]];</p>
-<p class="p4"><span class="s6">~staff3</span> = [[0, [2, 0, <span class="s4">"b2"</span>]], [1, [2, 0, <span class="s4">"d3"</span>]], [2, [2, 0, <span class="s4">"g#2"</span>]]];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="s1">a.chromatic(</span><span class="s6">~staff1</span><span class="s1"> ++ </span><span class="s6">~staff2</span><span class="s1"> ++ </span><span class="s6">~staff3</span><span class="s1">); </span>//[pos, [staff, noteType, note, color]]</p>
-<p class="p2"><br></p>
-<p class="p4">a.close;</p>
-<p class="p2"><br></p>
-<p class="p3"><span class="s1">a = </span>AlgorithmicScore<span class="s1">(1.2);</span></p>
-<p class="p2"><br></p>
-<p class="p1"><span class="s1">a.score([</span><span class="s2">\piano</span><span class="s1">, </span><span class="s2">\piano</span><span class="s1">], 1, 1.3); </span>//clefArray, down, staffGap, spacing</p>
-<p class="p2"><br></p>
-<p class="p4"><span class="s6">~staff1</span> = [[0, [0, 0, <span class="s4">"c5"</span>, <span class="s2">\sharp</span>, <span class="s2">\black</span>]], [0, [0, 0, <span class="s4">"b2"</span>, <span class="s2">\flat</span>, <span class="s2">\red</span>]], [1, [0, 0, <span class="s4">"e6"</span>, <span class="s2">\nat</span>, <span class="s2">\black</span>]]];</p>
-<p class="p4"><span class="s6">~staff2</span> = [[0, [1, 0, <span class="s4">"f2"</span>, <span class="s2">\sharp</span>, <span class="s2">\blue</span>]], [1, [1, 0, <span class="s4">"e4"</span>, <span class="s2">\flat</span>, <span class="s2">\black</span>]], [2, [1, 0, <span class="s4">"b4"</span>, <span class="s2">\nat</span>, <span class="s2">\red</span>]]];</p>
-<p class="p4">a.enharmonic(<span class="s6">~staff1</span> ++ <span class="s6">~staff2</span>);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="s1">a.score([</span><span class="s2">\piano</span><span class="s1">], 1, 1.3); </span>//clefArray, down, staffGap, spacing</p>
-<p class="p2"><br></p>
-<p class="p4"><span class="s6">~staff1</span> = <span class="s6">~staff1</span> = [[0, [0, 1, <span class="s4">"c#4"</span>, <span class="s2">\black</span>]], [0, [0, 1, <span class="s4">"a#2"</span>, <span class="s2">\red</span>]], [1, [0, 1, <span class="s4">"e6"</span>,<span class="s2">\black</span>]]];</p>
-<p class="p4">a.chromatic(<span class="s6">~staff1</span>);</p>
-<p class="p4"><span class="s6">~staff2</span> = [[0, [0, 0, <span class="s4">"f#2"</span>, <span class="s2">\blue</span>]], [1, [0, 0, <span class="s4">"d#4"</span>, <span class="s2">\black</span>]], [2, [0, 0, <span class="s4">"b4"</span>, <span class="s2">\red</span>]]];</p>
-<p class="p4">a.chromatic(<span class="s6">~staff2</span>);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="s1">a.note(60, 0, </span><span class="s2">\red</span><span class="s1">); </span>//midiNum, pos, color, staff, noteType</p>
-<p class="p4">a.note(50, 1, noteType: 1);</p>
-<p class="p4">a.note(20, 2, <span class="s2">\blue</span>, noteType: 1);</p>
-<p class="p2"><br></p>
-<p class="p4">a.notes([60, 61, 62]);</p>
-<p class="p4">a.notes([60, 50, 20], [0,1,1], [<span class="s2">\black</span>, <span class="s2">\blue</span>]); <span class="s3">//midiNum, pos, color, staff, noteType</span></p>
-<p class="p2"><br></p>
-<p class="p4">(</p>
-<p class="p4"><span class="s6">~notes</span> = (60,61..72).scramble; <span class="s3">//random notes</span></p>
-<p class="p4">a.notes(<span class="s6">~notes</span>);</p>
-<p class="p4">)</p>
-<p class="p2"><br></p>
-<p class="p4">a.notes(<span class="s6">~notes</span>-7);</p>
-<p class="p2"><br></p>
-<p class="p4">a.close;</p>
-<p class="p2"><br></p>
-<p class="p3"><span class="s1">a = </span>AlgorithmicScore<span class="s1">(1.2);</span></p>
-<p class="p2"><br></p>
-<p class="p4">a.score([<span class="s2">\piano</span>], 1, 1.3);<span class="Apple-converted-space"> </span></p>
-<p class="p2"><br></p>
-<p class="p4">s.boot;</p>
-<p class="p2"><br></p>
-<p class="p1">//from James McCartney synth piano<span class="Apple-converted-space"> </span></p>
-<p class="p4">(</p>
-<p class="p4"><span class="s5">SynthDef</span>(<span class="s4">"synthPiano"</span>, {<span class="s7">arg</span> note = 36, out=0, legato=6, amp=1;<span class="Apple-converted-space"> </span></p>
-<p class="p4"><span class="s7">var</span> delayTime, detune, strike, hammerEnv, hammer, signal, env;</p>
-<p class="p4">env = <span class="s5">EnvGen</span>.kr(<span class="s5">Env</span>.linen(0.01, legato, 0.1), doneAction:2);</p>
-<p class="p4">hammerEnv = <span class="s5">Decay2</span>.ar(<span class="s5">Impulse</span>.ar(0.1), 0.008, 0.04);<span class="Apple-converted-space"> </span></p>
-<p class="p4">signal = <span class="s5">Mix</span>.ar(<span class="s5">Array</span>.fill(3, { <span class="s7">arg</span> i;</p>
-<p class="p4">detune = #[-0.05, 0, 0.04].at(i);</p>
-<p class="p4">delayTime = 1 / (note + detune).midicps;</p>
-<p class="p4">hammer = <span class="s5">LFNoise2</span>.ar(3000, hammerEnv);<span class="Apple-converted-space"> </span></p>
-<p class="p4"><span class="s5">CombL</span>.ar(hammer, delayTime, delayTime, legato) }));</p>
-<p class="p4"><span class="s5">Out</span>.ar(out, <span class="s5">Pan2</span>.ar(signal*env, (note - 36)/27 - 1, amp));</p>
-<p class="p4">}).send(s);</p>
-<p class="p4">)</p>
-<p class="p2"><br></p>
-<p class="p4">(</p>
-<p class="p4"><span class="s7">var</span> notes=(60,61..76), color, index=0;</p>
-<p class="p4">color = <span class="s5">Array</span>.fill(notes.size, <span class="s2">\black</span>);</p>
-<p class="p4">r = <span class="s5">Task</span>({<span class="s8">inf</span>.do({ notes.size.do({</p>
-<p class="p4">a.notes(notes, color:color.insert(index, <span class="s2">\red</span>));</p>
-<p class="p4"><span class="s5">Synth</span>(<span class="s4">"synthPiano"</span>, [<span class="s2">\note</span>, notes[index], <span class="s2">\legato</span>, rrand(1.4,1.8)]);</p>
-<p class="p4">0.3.yield;</p>
-<p class="p4">color = <span class="s5">Array</span>.fill(notes.size, <span class="s2">\black</span>);</p>
-<p class="p4">index = index + 1;</p>
-<p class="p4">});</p>
-<p class="p4">index = 0;</p>
-<p class="p4">});</p>
-<p class="p4">}).play( a.clock );</p>
-<p class="p4">)</p>
-<p class="p2"><br></p>
-<p class="p4">r.stop;</p>
-<p class="p4">r.resume;</p>
-<p class="p4">r.stop;</p>
-<p class="p2"><br></p>
-<p class="p1">//some notation fun</p>
-<p class="p2"><br></p>
-<p class="p4">(</p>
-<p class="p4"><span class="s7">var</span> pos=(0,1..17), note;</p>
-<p class="p4">r = <span class="s5">Task</span>({<span class="s8">inf</span>.do({ 18.do({</p>
-<p class="p4">note = rrand(38,59);<span class="Apple-converted-space"> </span></p>
-<p class="p4">a.notes([note, rrand(60,83)], [pos.choose, pos.choose], [[<span class="s2">\blue</span>, <span class="s2">\red</span>].choose, <span class="s2">\black</span>]);</p>
-<p class="p4"><span class="s5">Synth</span>(<span class="s4">"synthPiano"</span>, [<span class="s2">\note</span>, note, <span class="s2">\legato</span>, rrand(0.5,1.0)]);</p>
-<p class="p4">rrand(0.1,0.2).yield;</p>
-<p class="p4">});</p>
-<p class="p4">});</p>
-<p class="p4">}).play( a.clock );</p>
-<p class="p4">)</p>
-<p class="p2"><br></p>
-<p class="p4">r.stop;</p>
-<p class="p2"><br></p>
-<p class="p4"><span class="s6">~func</span> = {<span class="s7">arg</span> choise=1, note=69; if(choise == 1, {<span class="s5">Synth</span>(<span class="s4">"synthPiano"</span>, [<span class="s2">\note</span>, note, <span class="s2">\legato</span>, rrand(0.5,1.0)]);})}</p>
-<p class="p7">~choise<span class="s1"> = 0;</span></p>
-<p class="p2"><br></p>
-<p class="p4">(</p>
-<p class="p4"><span class="s7">var</span> dif = 0, notes, colors;</p>
-<p class="p4">r= <span class="s5">Task</span>({<span class="s8">inf</span>.do({6.do({</p>
-<p class="p4">35.do({</p>
-<p class="p4">notes = <span class="s5">Array</span>.fill(6,{rrand(41,82)}).scramble;</p>
-<p class="p4">colors = <span class="s5">Array</span>.fill(6,{[<span class="s2">\black</span>, <span class="s2">\red</span>, <span class="s2">\blue</span>, <span class="s2">\black</span>].choose});</p>
-<p class="p4">a.notes(notes, [0,1,2,3,4,5]*dif, colors);</p>
-<p class="p2"><br></p>
-<p class="p4">dif = dif + 0.3;</p>
-<p class="p4"><span class="s6">~choise</span> = dif.linlin(0,25,0,1.0);</p>
-<p class="p4"><span class="s6">~func</span>.value([0, 1].wchoose([<span class="s6">~choise</span>,<span class="s6">~choise</span>-1]), notes.choose);</p>
-<p class="p4">rrand(0.07,0.01).yield;</p>
-<p class="p4">});</p>
-<p class="p4">30.do({</p>
-<p class="p4">notes = <span class="s5">Array</span>.fill(6,{rrand(38,83)}).scramble;</p>
-<p class="p4">colors = <span class="s5">Array</span>.fill(6,{[<span class="s2">\black</span>, <span class="s2">\red</span>, <span class="s2">\blue</span>, <span class="s2">\black</span>].choose});</p>
-<p class="p4"><span class="s6">~choise</span> = dif.linlin(0,25,0,1.0);</p>
-<p class="p4"><span class="s6">~func</span>.value([0, 1].wchoose([<span class="s6">~choise</span>,<span class="s6">~choise</span>-1]), notes.choose);</p>
-<p class="p4">a.notes(notes, [0,1,2,3,4,5]*dif, colors);</p>
-<p class="p2"><br></p>
-<p class="p4">dif = dif - 0.3;</p>
-<p class="p4">rrand(0.07,0.01).yield;</p>
-<p class="p4">});</p>
-<p class="p4">});</p>
-<p class="p4">dif = 0;</p>
-<p class="p4">});</p>
-<p class="p4">}).play( a.clock );</p>
-<p class="p4">)</p>
-<p class="p2"><br></p>
-<p class="p4">r.stop;</p>
-<p class="p2"><br></p>
-<p class="p1">////////////////////////////////////////////////////////</p>
-<p class="p2"><br></p>
-<p class="p1">//get spectral info and put it in algorithmic score</p>
-<p class="p2"><br></p>
-<p class="p4">p = <span class="s5">PartialTracker</span>(512, 5, 1, 2, 3);<span class="Apple-converted-space"> </span></p>
-<p class="p4">p.startsynth(1);<span class="Apple-converted-space"> </span></p>
-<p class="p4">p.getarrays;</p>
-<p class="p4">p.numpartials(16);</p>
-<p class="p2"><br></p>
-<p class="p4"><span class="s6">~notes</span> = p.frequencies.cpsmidi.round(1);</p>
-<p class="p4"><span class="s6">~pos</span> = (0,1..16);</p>
-<p class="p4"><span class="s6">~acc</span> = <span class="s5">Array</span>.fill(<span class="s6">~notes</span>.size, 0);</p>
-<p class="p2"><br></p>
-<p class="p4">a.notes(<span class="s6">~notes</span>, <span class="s6">~pos</span>, <span class="s6">~acc</span>);</p>
-<p class="p2"><br></p>
-<p class="p4">a.notes(<span class="s6">~notes</span>.scramble, <span class="s6">~pos</span>, <span class="s6">~acc</span>);</p>
-<p class="p2"><br></p>
-<p class="p4"><span class="s6">~notes</span> = p.frequencies.cpsmidi.round(1);</p>
-<p class="p2"><br></p>
-<p class="p4">a.notes(<span class="s6">~notes</span>, <span class="s6">~pos</span>, <span class="s6">~acc</span>);</p>
-<p class="p2"><br></p>
-<p class="p4">a.close;</p>
-<p class="p2"><br></p>
-<p class="p1">////////////////////////////////////////////////////////</p>
-<p class="p2"><br></p>
+<p class="p1"><span class="s1">//MusicSync: http://www.fontspace.com/robert-allgeyer/musisync (place MusicSync in Libary/Fonts)</span></p>
+<p class="p1"><span class="s1">//Sonora: http://christian.texier.pagespro-orange.fr/mididesi/free/index.htm#sonora<span class="Apple-converted-space">  </span>(place Sonora.suit in Libary/Fonts)</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p3"><span class="s2">a = </span><span class="s1">AlgorithmicScore</span><span class="s2">(1.2);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s2">a.score([</span><span class="s3">\treble</span><span class="s2">, </span><span class="s3">\bass</span><span class="s2">, </span><span class="s3">\alto</span><span class="s2">, </span><span class="s3">\tenor</span><span class="s2">], 1, 1.3); </span><span class="s1">//clefArray, down, staffGap, spacing</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">(</span></p>
+<p class="p2"><span class="s1">a.findNotes([[0, [0, 1, 14, 0, 3, 0]], [0, [1, 0, 1, 1, 2, 1]], [0, [2, 1, 0, 2, 0, 2]],<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">[1, [0, 0, 7, 1, 0, 1]], [2, [0, 0, 3, 1, 0, 0]], [0, [3, 0, 6, 1, 0, 0]]]); </span><span class="s4">//[pos, [staff, noteType, note, acc, color]];</span></p>
+<p class="p2"><span class="s1">)</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s2">a.text(</span><span class="s5">"ad lib"</span><span class="s2">, </span><span class="s5">"Helvetica"</span><span class="s2">, color: </span><span class="s6">Color</span><span class="s2">.rand) </span><span class="s1">//arg are string, letterType, letterSize, color, widthAdj, heightAdj<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.textClose</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.score([</span><span class="s3">\bass</span><span class="s1">, </span><span class="s3">\treble</span><span class="s1">, </span><span class="s3">\treble</span><span class="s1">], 1, 1.3);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s7">~staff1</span><span class="s2"> = [[0, [0, 1, </span><span class="s5">"c3"</span><span class="s2">]], [1, [0, 0, </span><span class="s5">"b3"</span><span class="s2">, </span><span class="s3">\flat</span><span class="s2">, </span><span class="s3">\blue</span><span class="s2">]]]; </span><span class="s1">//[pos, [staff, noteType, note, acc, color]]</span></p>
+<p class="p2"><span class="s7">~staff2</span><span class="s1"> = [[0, [1, 0, </span><span class="s5">"d5"</span><span class="s1">, </span><span class="s3">\flat</span><span class="s1">]]];</span></p>
+<p class="p2"><span class="s7">~staff3</span><span class="s1"> = [[0, [2, 1, </span><span class="s5">"a3"</span><span class="s1">, </span><span class="s3">\nat</span><span class="s1">, </span><span class="s3">\red</span><span class="s1">]]];</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.enharmonic(</span><span class="s7">~staff1</span><span class="s1"> ++ </span><span class="s7">~staff2</span><span class="s1"> ++ </span><span class="s7">~staff3</span><span class="s1">);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s2">a.text(</span><span class="s5">"Improvise with pitch material"</span><span class="s2">, </span><span class="s5">"Helvetica"</span><span class="s2">, 60,-0.5,0.5, </span><span class="s8">Color</span><span class="s2">.rand); </span><span class="s1">//string, font, letterSize, inLeft, inTop, letterAdj, color</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.close;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p3"><span class="s2">a = </span><span class="s1">AlgorithmicScore</span><span class="s2">(0.8, </span><span class="s5">"AlgoScore"</span><span class="s2">);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.score([</span><span class="s3">\treble</span><span class="s1">], 2.0, 1.2, 2.0);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.noteAdjust = -11.0;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.enharmonic([[0, [0, 1, </span><span class="s5">"e4"</span><span class="s1">, </span><span class="s3">\flat</span><span class="s1">]], [1, [0, 0, </span><span class="s5">"d4"</span><span class="s1">, </span><span class="s3">\nat</span><span class="s1">]], [2, [0, 0, </span><span class="s5">"b3"</span><span class="s1">, </span><span class="s3">\nat</span><span class="s1">]], [3, [0, 0, </span><span class="s5">"e3"</span><span class="s1">, </span><span class="s3">\flat</span><span class="s1">]], [4, [0, 0, </span><span class="s5">"f4"</span><span class="s1">, </span><span class="s3">\nat</span><span class="s1">]], [5, [0, 0, </span><span class="s5">"c5"</span><span class="s1">, </span><span class="s3">\sharp</span><span class="s1">]], [6, [0, 1, </span><span class="s5">"e6"</span><span class="s1">, </span><span class="s3">\nat</span><span class="s1">]], [7, [0, 1, </span><span class="s5">"c7"</span><span class="s1">, </span><span class="s3">\sharp</span><span class="s1">]], [8, [0, 1, </span><span class="s5">"d8"</span><span class="s1">, </span><span class="s3">\flat</span><span class="s1">]]];); </span><span class="s4">//[pos, [staff, noteType, note, acc, color]];</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.expression(</span><span class="s5">"p"</span><span class="s1">, letterSize: 80, widthAdj:0.15, heightAdj: 1.4)</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.close;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a = </span><span class="s6">AlgorithmicScore</span><span class="s1">.screenBounds;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1">//an image or movie:<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s2">a.playMovie(</span><span class="s1">"/Users/fr155035/Pictures/music/music/1.jpg"</span><span class="s2">, 2938/5,4013/5); </span><span class="s4">//path, pixel1, pixel2</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p4"><span class="s2">a.image(</span><span class="s1">"/Users/fr155035/Pictures/music/music/1.jpg"</span><span class="s2">, 1/5); </span><span class="s4">//path, pixel1, pixel2</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p4"><span class="s2">a.imageCenter(</span><span class="s1">"/Users/fr155035/Pictures/music/music/1.jpg"</span><span class="s2">, 1/5); </span><span class="s4">//path, pixel1, pixel2</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.w.refresh;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p5"><span class="s2">a.score([</span><span class="s1">\treble</span><span class="s2">, </span><span class="s1">\treble</span><span class="s2">, </span><span class="s1">\bass</span><span class="s2">]); </span><span class="s4">//clefArray</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s7">~staff1</span><span class="s1"> = [[0, [0, 0, </span><span class="s5">"c#4"</span><span class="s1">]], [1, [0, 0, </span><span class="s5">"c#5"</span><span class="s1">, </span><span class="s3">\red</span><span class="s1">]], [2, [0, 0, </span><span class="s5">"e6"</span><span class="s1">]]]; </span><span class="s4">//[pos, [staff, noteType, note, acc, color]]</span></p>
+<p class="p2"><span class="s7">~staff2</span><span class="s1"> = [[0, [1, 0, </span><span class="s5">"d4"</span><span class="s1">]], [1, [1, 0, </span><span class="s5">"b3"</span><span class="s1">]], [2, [1, 0, </span><span class="s5">"f#4"</span><span class="s1">, </span><span class="s3">\blue</span><span class="s1">]]];</span></p>
+<p class="p2"><span class="s7">~staff3</span><span class="s1"> = [[0, [2, 0, </span><span class="s5">"b2"</span><span class="s1">]], [1, [2, 0, </span><span class="s5">"d3"</span><span class="s1">]], [2, [2, 0, </span><span class="s5">"g#2"</span><span class="s1">]]];</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s2">a.chromatic(</span><span class="s7">~staff1</span><span class="s2"> ++ </span><span class="s7">~staff2</span><span class="s2"> ++ </span><span class="s7">~staff3</span><span class="s2">); </span><span class="s1">//[pos, [staff, noteType, note, color]]</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.close;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p3"><span class="s2">a = </span><span class="s1">AlgorithmicScore</span><span class="s2">(1.2);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s2">a.score([</span><span class="s3">\piano</span><span class="s2">, </span><span class="s3">\piano</span><span class="s2">], 1, 1.3); </span><span class="s1">//clefArray, down, staffGap, spacing</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s7">~staff1</span><span class="s1"> = [[0, [0, 0, </span><span class="s5">"c5"</span><span class="s1">, </span><span class="s3">\sharp</span><span class="s1">, </span><span class="s3">\black</span><span class="s1">]], [0, [0, 0, </span><span class="s5">"b2"</span><span class="s1">, </span><span class="s3">\flat</span><span class="s1">, </span><span class="s3">\red</span><span class="s1">]], [1, [0, 0, </span><span class="s5">"e6"</span><span class="s1">, </span><span class="s3">\nat</span><span class="s1">, </span><span class="s3">\black</span><span class="s1">]]];</span></p>
+<p class="p2"><span class="s7">~staff2</span><span class="s1"> = [[0, [1, 0, </span><span class="s5">"f2"</span><span class="s1">, </span><span class="s3">\sharp</span><span class="s1">, </span><span class="s3">\blue</span><span class="s1">]], [1, [1, 0, </span><span class="s5">"e4"</span><span class="s1">, </span><span class="s3">\flat</span><span class="s1">, </span><span class="s3">\black</span><span class="s1">]], [2, [1, 0, </span><span class="s5">"b4"</span><span class="s1">, </span><span class="s3">\nat</span><span class="s1">, </span><span class="s3">\red</span><span class="s1">]]];</span></p>
+<p class="p2"><span class="s1">a.enharmonic(</span><span class="s7">~staff1</span><span class="s1"> ++ </span><span class="s7">~staff2</span><span class="s1">);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s2">a.score([</span><span class="s3">\piano</span><span class="s2">], 1, 1.3); </span><span class="s1">//clefArray, down, staffGap, spacing</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s7">~staff1</span><span class="s1"> = </span><span class="s7">~staff1</span><span class="s1"> = [[0, [0, 1, </span><span class="s5">"c#4"</span><span class="s1">, </span><span class="s3">\black</span><span class="s1">]], [0, [0, 1, </span><span class="s5">"a#2"</span><span class="s1">, </span><span class="s3">\red</span><span class="s1">]], [1, [0, 1, </span><span class="s5">"e6"</span><span class="s1">,</span><span class="s3">\black</span><span class="s1">]]];</span></p>
+<p class="p2"><span class="s1">a.chromatic(</span><span class="s7">~staff1</span><span class="s1">);</span></p>
+<p class="p2"><span class="s7">~staff2</span><span class="s1"> = [[0, [0, 0, </span><span class="s5">"f#2"</span><span class="s1">, </span><span class="s3">\blue</span><span class="s1">]], [1, [0, 0, </span><span class="s5">"d#4"</span><span class="s1">, </span><span class="s3">\black</span><span class="s1">]], [2, [0, 0, </span><span class="s5">"b4"</span><span class="s1">, </span><span class="s3">\red</span><span class="s1">]]];</span></p>
+<p class="p2"><span class="s1">a.chromatic(</span><span class="s7">~staff2</span><span class="s1">);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s2">a.note(60, 0, </span><span class="s3">\red</span><span class="s2">); </span><span class="s1">//midiNum, pos, color, staff, noteType</span></p>
+<p class="p2"><span class="s1">a.note(50, 1, noteType: 1);</span></p>
+<p class="p2"><span class="s1">a.note(20, 2, </span><span class="s3">\blue</span><span class="s1">, noteType: 1);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.notes([60, 61, 62]);</span></p>
+<p class="p2"><span class="s1">a.notes([60, 50, 20], [0,1,1], [</span><span class="s3">\black</span><span class="s1">, </span><span class="s3">\blue</span><span class="s1">]); </span><span class="s4">//midiNum, pos, color, staff, noteType</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">(</span></p>
+<p class="p2"><span class="s7">~notes</span><span class="s1"> = (60,61..72).scramble; </span><span class="s4">//random notes</span></p>
+<p class="p2"><span class="s1">a.notes(</span><span class="s7">~notes</span><span class="s1">);</span></p>
+<p class="p2"><span class="s1">)</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.notes(</span><span class="s7">~notes</span><span class="s1">-7);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.close;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p3"><span class="s2">a = </span><span class="s1">AlgorithmicScore</span><span class="s2">(1.2);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.score([</span><span class="s3">\piano</span><span class="s1">], 1, 1.3);<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">s.boot;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1">//from James McCartney synth piano<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">(</span></p>
+<p class="p2"><span class="s6">SynthDef</span><span class="s1">(</span><span class="s5">"synthPiano"</span><span class="s1">, {</span><span class="s9">arg</span><span class="s1"> note = 36, out=0, legato=6, amp=1;<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s9">var</span><span class="s1"> delayTime, detune, strike, hammerEnv, hammer, signal, env;</span></p>
+<p class="p2"><span class="s1">env = </span><span class="s6">EnvGen</span><span class="s1">.kr(</span><span class="s6">Env</span><span class="s1">.linen(0.01, legato, 0.1), doneAction:2);</span></p>
+<p class="p2"><span class="s1">hammerEnv = </span><span class="s6">Decay2</span><span class="s1">.ar(</span><span class="s6">Impulse</span><span class="s1">.ar(0.1), 0.008, 0.04);<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">signal = </span><span class="s6">Mix</span><span class="s1">.ar(</span><span class="s6">Array</span><span class="s1">.fill(3, { </span><span class="s9">arg</span><span class="s1"> i;</span></p>
+<p class="p2"><span class="s1">detune = #[-0.05, 0, 0.04].at(i);</span></p>
+<p class="p2"><span class="s1">delayTime = 1 / (note + detune).midicps;</span></p>
+<p class="p2"><span class="s1">hammer = </span><span class="s6">LFNoise2</span><span class="s1">.ar(3000, hammerEnv);<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s6">CombL</span><span class="s1">.ar(hammer, delayTime, delayTime, legato) }));</span></p>
+<p class="p2"><span class="s6">Out</span><span class="s1">.ar(out, </span><span class="s6">Pan2</span><span class="s1">.ar(signal*env, (note - 36)/27 - 1, amp));</span></p>
+<p class="p2"><span class="s1">}).send(s);</span></p>
+<p class="p2"><span class="s1">)</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">(</span></p>
+<p class="p2"><span class="s9">var</span><span class="s1"> notes=(60,61..76), color, index=0;</span></p>
+<p class="p2"><span class="s1">color = </span><span class="s6">Array</span><span class="s1">.fill(notes.size, </span><span class="s3">\black</span><span class="s1">);</span></p>
+<p class="p2"><span class="s1">r = </span><span class="s6">Task</span><span class="s1">({</span><span class="s10">inf</span><span class="s1">.do({ notes.size.do({</span></p>
+<p class="p2"><span class="s1">a.notes(notes, color:color.insert(index, </span><span class="s3">\red</span><span class="s1">));</span></p>
+<p class="p2"><span class="s6">Synth</span><span class="s1">(</span><span class="s5">"synthPiano"</span><span class="s1">, [</span><span class="s3">\note</span><span class="s1">, notes[index], </span><span class="s3">\legato</span><span class="s1">, rrand(1.4,1.8)]);</span></p>
+<p class="p2"><span class="s1">0.3.yield;</span></p>
+<p class="p2"><span class="s1">color = </span><span class="s6">Array</span><span class="s1">.fill(notes.size, </span><span class="s3">\black</span><span class="s1">);</span></p>
+<p class="p2"><span class="s1">index = index + 1;</span></p>
+<p class="p2"><span class="s1">});</span></p>
+<p class="p2"><span class="s1">index = 0;</span></p>
+<p class="p2"><span class="s1">});</span></p>
+<p class="p2"><span class="s1">}).play( a.clock );</span></p>
+<p class="p2"><span class="s1">)</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">r.stop;</span></p>
+<p class="p2"><span class="s1">r.resume;</span></p>
+<p class="p2"><span class="s1">r.stop;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1">//some notation fun</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">(</span></p>
+<p class="p2"><span class="s9">var</span><span class="s1"> pos=(0,1..17), note;</span></p>
+<p class="p2"><span class="s1">r = </span><span class="s6">Task</span><span class="s1">({</span><span class="s10">inf</span><span class="s1">.do({ 18.do({</span></p>
+<p class="p2"><span class="s1">note = rrand(38,59);<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">a.notes([note, rrand(60,83)], [pos.choose, pos.choose], [[</span><span class="s3">\blue</span><span class="s1">, </span><span class="s3">\red</span><span class="s1">].choose, </span><span class="s3">\black</span><span class="s1">]);</span></p>
+<p class="p2"><span class="s6">Synth</span><span class="s1">(</span><span class="s5">"synthPiano"</span><span class="s1">, [</span><span class="s3">\note</span><span class="s1">, note, </span><span class="s3">\legato</span><span class="s1">, rrand(0.5,1.0)]);</span></p>
+<p class="p2"><span class="s1">rrand(0.1,0.2).yield;</span></p>
+<p class="p2"><span class="s1">});</span></p>
+<p class="p2"><span class="s1">});</span></p>
+<p class="p2"><span class="s1">}).play( a.clock );</span></p>
+<p class="p2"><span class="s1">)</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">r.stop;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s7">~func</span><span class="s1"> = {</span><span class="s9">arg</span><span class="s1"> choise=1, note=69; if(choise == 1, {</span><span class="s6">Synth</span><span class="s1">(</span><span class="s5">"synthPiano"</span><span class="s1">, [</span><span class="s3">\note</span><span class="s1">, note, </span><span class="s3">\legato</span><span class="s1">, rrand(0.5,1.0)]);})}</span></p>
+<p class="p6"><span class="s1">~choise</span><span class="s2"> = 0;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">(</span></p>
+<p class="p2"><span class="s9">var</span><span class="s1"> dif = 0, notes, colors;</span></p>
+<p class="p2"><span class="s1">r= </span><span class="s6">Task</span><span class="s1">({</span><span class="s10">inf</span><span class="s1">.do({6.do({</span></p>
+<p class="p2"><span class="s1">35.do({</span></p>
+<p class="p2"><span class="s1">notes = </span><span class="s6">Array</span><span class="s1">.fill(6,{rrand(41,82)}).scramble;</span></p>
+<p class="p2"><span class="s1">colors = </span><span class="s6">Array</span><span class="s1">.fill(6,{[</span><span class="s3">\black</span><span class="s1">, </span><span class="s3">\red</span><span class="s1">, </span><span class="s3">\blue</span><span class="s1">, </span><span class="s3">\black</span><span class="s1">].choose});</span></p>
+<p class="p2"><span class="s1">a.notes(notes, [0,1,2,3,4,5]*dif, colors);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">dif = dif + 0.3;</span></p>
+<p class="p2"><span class="s7">~choise</span><span class="s1"> = dif.linlin(0,25,0,1.0);</span></p>
+<p class="p2"><span class="s7">~func</span><span class="s1">.value([0, 1].wchoose([</span><span class="s7">~choise</span><span class="s1">,</span><span class="s7">~choise</span><span class="s1">-1]), notes.choose);</span></p>
+<p class="p2"><span class="s1">rrand(0.07,0.01).yield;</span></p>
+<p class="p2"><span class="s1">});</span></p>
+<p class="p2"><span class="s1">30.do({</span></p>
+<p class="p2"><span class="s1">notes = </span><span class="s6">Array</span><span class="s1">.fill(6,{rrand(38,83)}).scramble;</span></p>
+<p class="p2"><span class="s1">colors = </span><span class="s6">Array</span><span class="s1">.fill(6,{[</span><span class="s3">\black</span><span class="s1">, </span><span class="s3">\red</span><span class="s1">, </span><span class="s3">\blue</span><span class="s1">, </span><span class="s3">\black</span><span class="s1">].choose});</span></p>
+<p class="p2"><span class="s7">~choise</span><span class="s1"> = dif.linlin(0,25,0,1.0);</span></p>
+<p class="p2"><span class="s7">~func</span><span class="s1">.value([0, 1].wchoose([</span><span class="s7">~choise</span><span class="s1">,</span><span class="s7">~choise</span><span class="s1">-1]), notes.choose);</span></p>
+<p class="p2"><span class="s1">a.notes(notes, [0,1,2,3,4,5]*dif, colors);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">dif = dif - 0.3;</span></p>
+<p class="p2"><span class="s1">rrand(0.07,0.01).yield;</span></p>
+<p class="p2"><span class="s1">});</span></p>
+<p class="p2"><span class="s1">});</span></p>
+<p class="p2"><span class="s1">dif = 0;</span></p>
+<p class="p2"><span class="s1">});</span></p>
+<p class="p2"><span class="s1">}).play( a.clock );</span></p>
+<p class="p2"><span class="s1">)</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">r.stop;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1">////////////////////////////////////////////////////////</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1">//get spectral info and put it in algorithmic score</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">p = </span><span class="s6">PartialTracker</span><span class="s1">(512, 5, 1, 2, 3);<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">p.startsynth(1);<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">p.getarrays;</span></p>
+<p class="p2"><span class="s1">p.numpartials(16);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s7">~notes</span><span class="s1"> = p.frequencies.cpsmidi.round(1);</span></p>
+<p class="p2"><span class="s7">~pos</span><span class="s1"> = (0,1..16);</span></p>
+<p class="p2"><span class="s7">~acc</span><span class="s1"> = </span><span class="s6">Array</span><span class="s1">.fill(</span><span class="s7">~notes</span><span class="s1">.size, 0);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.notes(</span><span class="s7">~notes</span><span class="s1">, </span><span class="s7">~pos</span><span class="s1">, </span><span class="s7">~acc</span><span class="s1">);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.notes(</span><span class="s7">~notes</span><span class="s1">.scramble, </span><span class="s7">~pos</span><span class="s1">, </span><span class="s7">~acc</span><span class="s1">);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s7">~notes</span><span class="s1"> = p.frequencies.cpsmidi.round(1);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.notes(</span><span class="s7">~notes</span><span class="s1">, </span><span class="s7">~pos</span><span class="s1">, </span><span class="s7">~acc</span><span class="s1">);</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p2"><span class="s1">a.close;</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1">////////////////////////////////////////////////////////</span></p>
+<p class="p2"><span class="s1"><br>
+</span></p>
 </body>
 </html>
