@@ -78,11 +78,11 @@ a.close;
 a = AlgorithmicScore.screenBounds;
 
 //an image or movie:
-a.playMovie("~/Library/Application Support/SuperCollider/Extensions/OnViolence/AlgoScore/videos/battle1.mov".standardizePath, 1, 1280,720); //path, rate, pixel1, pixel2
+a.playMovie("~/Library/Application Support/SuperCollider/Extensions/OnViolence/Media/AlgoScore/videos/battle1.mov".standardizePath, 1, 1280,720); //path, rate, pixel1, pixel2
 
-a.image("~/Library/Application Support/SuperCollider/Extensions/OnViolence/AlgoScore/score/onviolencescore1.jpg".standardizePath, 0.75); //path, scale
+a.image("~/Library/Application Support/SuperCollider/Extensions/OnViolence/Media/AlgoScore/score/onviolencescore1.jpg".standardizePath, 0.75); //path, scale
 
-a.imageCenter("~/Library/Application Support/SuperCollider/Extensions/OnViolence/AlgoScore/score/onviolencescore2.jpg".standardizePath, 1); //path, scale
+a.imageCenter("~/Library/Application Support/SuperCollider/Extensions/OnViolence/Media/AlgoScore/score/onviolencescore2.jpg".standardizePath, 1); //path, scale
 
 a.w.refresh;
 
