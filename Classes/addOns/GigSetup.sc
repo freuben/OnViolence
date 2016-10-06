@@ -1,6 +1,7 @@
 GigSetup {
 
-	*new {arg string, energy="never", airport="off", specialApps=[\quit, "Dropbox"], closeOpenApps=true, appExceptions=["Finder", "SuperCollider"];
+	*new {arg string, energy="never", airport="off", specialApps=[\quit, "Dropbox"],
+		closeOpenApps=true, appExceptions=["Finder", "SuperCollider"];
 		^super.new.init(string, energy, airport, specialApps, closeOpenApps, appExceptions);
 	}
 
@@ -103,6 +104,18 @@ GigSetup {
 		script.appleScript;
 	}
 
+	*airport {arg cmd="on", port="en0";
+		cmd.asString.airPort(port).appleScript;
+	}
+
+	*airportOn {arg port="en0";
+		"on".airPort(port).appleScript;
+	}
+
+	*airportOff {arg port="en0";
+		"off".airPort(port).appleScript;
+	}
+
 }
 
 + String {
@@ -122,8 +135,9 @@ GigSetup {
 		^return;
 	}
 
-	airPort {var return;
-		return = ("do shell script \"networksetup -setairportpower en0 " ++ this ++ "\"");
+	airPort {arg port="en0";
+		var return;
+		return = ("do shell script \"networksetup -setairportpower " ++ port ++ " " ++ this ++ "\"");
 		^return;
 	}
 
