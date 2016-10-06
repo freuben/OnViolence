@@ -1,4 +1,7 @@
-AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, <>g, <>func2, extra, octava, <>down, n, taskOn, clickColor1, white1, clickColor2, white2, clickColor3, white3, clickColor4, white4, taskOn2, synth, synth2, trebleClef, bassClef, altoClef, <>movie, <>picture, x, y, <>staffArr, <>clefArr, clefFunc, <>storeArrayClef, <>pianoArray, drawLines, <>staffGap, windowType=1, <>spacing, <>noteAdjust, clearStaffArr,<>clock, text, text2, <>express, <>tagWindow, <>stopWatchWindow, <>stopWatchRoutine;
+AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, <>g, <>func2, extra;
+	var octava, <>down, n, taskOn, clickColor1, white1, clickColor2, white2, clickColor3, white3;
+	var clickColor4, white4, taskOn2, synth, synth2, trebleClef, bassClef, altoClef, <>movie; 	var <>picture, x, y, <>staffArr, <>clefArr, clefFunc, <>storeArrayClef, <>pianoArray, drawLines; 	var <>staffGap, windowType=1, <>spacing, <>noteAdjust, clearStaffArr,<>clock, text, text2;
+	var <>express, <>tagWindow, <>stopWatchWindow, <>stopWatchRoutine;
 
 	*new {arg firstResize=1.5, string="score";
 			^super.new.init(firstResize, string);
@@ -22,7 +25,8 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
    	this.firstFunc(w);
 	}
 
-	*screenSet {arg string="score", left=0, top=0, width=1366, height=768, firstResize=1.4266666666667;
+	*screenSet {arg string="score", left=0, top=0,
+		width=1366, height=768, firstResize=1.4266666666667;
 	^super.new.init3(string, left, top, width, height, firstResize);
 	}
 
@@ -81,7 +85,9 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	pix2 = picture.height*scale;
 	if(above == nil, {above = w.bounds.asArray[2]-pix2/18});
 	w.drawFunc_({
-		picture.drawInRect(Rect((w.bounds.asArray[2]-pix1/2), above, pix1, pix2),picture.bounds,1,1);
+		picture.drawInRect(
+		Rect((w.bounds.asArray[2]-pix1/2), above, pix1, pix2),
+		picture.bounds,1,1);
 	});
 	w.refresh;
 	});
@@ -103,7 +109,9 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	pathName = pathName ?? { "/DeskTop/test.mov" };
 	windowType = 1;
 	w.drawFunc_({
- 		picture.drawInRect(Rect((w.bounds.asArray[2]-pix1/2),(w.bounds.asArray[3]-pix2/2),pix1,pix2),picture.bounds,1,1);
+ 		picture.drawInRect(
+ 		Rect((w.bounds.asArray[2]-pix1/2),(w.bounds.asArray[3]-pix2/2),pix1,pix2),
+ 		picture.bounds,1,1);
 	});
 	w.refresh;
 	}
@@ -153,7 +161,10 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 		{item == \tenor} {clef = altoClef; adjClef = -17;};
 
 		if(item.notNil,
-				{staffArr = staffArr.add( StaticText( w, Rect( 38*resize, ((3.9+adjClef+down)+step1)*resize, (170+step2)*resize, 100*resize )).string_( clef ));
+				{staffArr = staffArr.add( 
+					StaticText( w, 
+					Rect( 38*resize, ((3.9+adjClef+down)+step1)*resize, 
+					(170+step2)*resize, 100*resize )).string_( clef ));
 				clearStaffArr = staffArr;
 				fontArr = fontArr.add( item );
 				});
@@ -175,7 +186,12 @@ fontArr.do({|item, index|
 		});
 		};
 
-	drawLines = {arg color=\black; clefArr.do({|item, index| if(item.notNil, {func.value(((index*staffGap)+1), resize, resize2, color);}); });};
+	drawLines = {arg color=\black; 
+		clefArr.do({|item, index| 
+			if(item.notNil, {
+				func.value(((index*staffGap)+1), resize, resize2, color);
+				}); 
+			});};
 
     }
 
@@ -228,7 +244,12 @@ fontArr.do({|item, index|
 	var newArr;
 	pianoArray = arrayClef;
 	newArr = [];
-	arrayClef.do({|item| if(item == \piano, {newArr = newArr.add([\treble, \bass])}, {newArr = newArr.add(item) }); });
+	arrayClef.do({|item| if(item == \piano, {
+		newArr = newArr.add([\treble, \bass])
+		}, {
+			newArr = newArr.add(item) 
+			}); 
+			});
 	newArr = newArr.flat;
 
 	this.newScore(newArr, adjDown, adjStaffGap, adjSpacing);
@@ -246,7 +267,8 @@ fontArr.do({|item, index|
 
     }
 
-    findNotes {arg arrayNotes= [[0,[0,0,0,0,0,0]]], staffColor= \black; //[pos, [staff, noteType, note, acc, color]];
+    findNotes {arg arrayNotes= [[0,[0,0,0,0,0,0]]], staffColor= \black; 
+	    //[pos, [staff, noteType, note, acc, color]];
 	var count, newArray;
 	count = 0;
 	newArray = [];
@@ -284,7 +306,8 @@ fontArr.do({|item, index|
 			{colorPen == 2} {colFunc = Color.red};
 				Pen.font = Font( "Sonora", fontSize*resize );
 				Pen.color = colFunc;
-				Pen.stringAtPoint( symb, Point( (pos1+pos), ((noteAdjust*resize)+((5*height)+(down*resize))))) };
+				Pen.stringAtPoint( symb, 
+				Point( (pos1+pos), ((noteAdjust*resize)+((5*height)+(down*resize))))) };
 	staffAdj = {arg pix; (pix + ((16*staffGap)*staff)*resize)};
 
 	case
@@ -295,27 +318,57 @@ fontArr.do({|item, index|
 	noteHeight = noteHeight*resize;
 	newArray = newArray.add({penFunc.value(symbol, (pos*step), noteHeight, color);});
 	case
-	{acc == 1} {newArray = newArray.add({penFunc.value(sharp, (pos*step)-(14*resize), noteHeight, color);});}
-	{acc == 2} {newArray = newArray.add({penFunc.value(flat, (pos*step)-(14*resize), noteHeight, color);});}
-	{acc == 3} {newArray = newArray.add({penFunc.value(nat, (pos*step)-(14*resize), noteHeight, color);});};
+	{acc == 1} {newArray = newArray.add({
+		penFunc.value(sharp, (pos*step)-(14*resize), noteHeight, color);
+		});}
+	{acc == 2} {newArray = newArray.add({
+		penFunc.value(flat, (pos*step)-(14*resize), noteHeight, color);
+		});}
+	{acc == 3} {newArray = newArray.add({
+		penFunc.value(nat, (pos*step)-(14*resize), noteHeight, color);
+		});};
 	case
-	{oct == 1} {newArray = newArray.add({penFunc.value(octava, (pos*step)-(2.5*resize), (noteHeight-(2*resize)), color);});}
-	{oct == 2} {newArray = newArray.add({penFunc.value(octava, (pos*step)-(2.5*resize), (noteHeight+(6*resize)), color);});}
-	{oct == 3} {newArray = newArray.add({penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight-(1*resize)), color, 40);});}
-	{oct == 4} {newArray = newArray.add({penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight+(6*resize)), color, 40);});};
+	{oct == 1} {newArray = newArray.add({
+		penFunc.value(octava, (pos*step)-(2.5*resize), (noteHeight-(2*resize)), color);
+		});}
+	{oct == 2} {newArray = newArray.add({
+		penFunc.value(octava, (pos*step)-(2.5*resize), (noteHeight+(6*resize)), color);
+		});}
+	{oct == 3} {newArray = newArray.add({
+		penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight-(1*resize)), color, 40);
+		});}
+	{oct == 4} {newArray = newArray.add({
+		penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight+(6*resize)), color, 40);
+		});};
 
 	case
-	{note <= 0} {newArray = newArray.add({penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(7), color);});}
-	{note >= 12} {newArray = newArray.add({penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(-5), color);});};
+	{note <= 0} {newArray = newArray.add({
+		penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(7), color);
+		});}
+	{note >= 12} {newArray = newArray.add({
+		penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(-5), color);
+		});};
 	case
-	{note <= -2} {newArray = newArray.add({penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(9), color);});}
-	{note >= 14} {newArray = newArray.add({penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(-7), color);});};
+	{note <= -2} {newArray = newArray.add({
+		penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(9), color);
+		});}
+	{note >= 14} {newArray = newArray.add({
+		penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(-7), color);
+		});};
 	case
-	{note <= -4} {newArray = newArray.add({penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(11), color);});}
-	{note >= 16} {newArray = newArray.add({penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(-9), color);});};
+	{note <= -4} {newArray = newArray.add({
+		penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(11), color);
+		});}
+	{note >= 16} {newArray = newArray.add({
+		penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(-9), color);
+		});};
 	case
-	{note <= -6} {newArray = newArray.add({penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(13), color);});}
-	{note >= 18} {newArray = newArray.add({penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(-11), color);});};
+	{note <= -6} {newArray = newArray.add({
+		penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(13), color);
+		});}
+	{note >= 18} {newArray = newArray.add({
+		penFunc.value(leasureLine, (pos*step)-(2.5*resize), staffAdj.value(-11), color);
+		});};
 
 	count = count + 1;
 	});
@@ -324,8 +377,11 @@ fontArr.do({|item, index|
 
     }
 
-    findChromatic {arg array = [[0, [1, 0, "c#4", 0]], [0, [0, 0, "c#5", 1]], [1, [0, 0, "e6", 0]]]; //[pos, [staff, noteType, noteName, color]]
-	var count, newArray, pos, staff, noteType, noteName, color, white, midiNote, noteClass, octave, oct, note, acc, col;
+    findChromatic {arg array = [[0, [1, 0, "c#4", 0]], [0, [0, 0, "c#5", 1]], 
+	    [1, [0, 0, "e6", 0]]];
+	     //[pos, [staff, noteType, noteName, color]]
+	var count, newArray, pos, staff, noteType, noteName, color, white, midiNote;
+	var noteClass, octave, oct, note, acc, col;
 	count = 0;
 	newArray = [];
 
@@ -373,15 +429,19 @@ fontArr.do({|item, index|
 	{(note < -6).and(note >= -12)} {note = note + 7; oct = 2}
 	{note < -13} {note = note + 14; oct = 4};
 
-	newArray = newArray.add([pos, [staff, noteType, note, acc, oct, col]]); //[pos, [staff, noteType, note, acc, oct, color]];
+	newArray = newArray.add([pos, [staff, noteType, note, acc, oct, col]]); 
+	//[pos, [staff, noteType, note, acc, oct, color]];
 	count = count + 1;
 	});
 
 	this.findNotes(newArray);
 	}
 
-	findEnharmonic {arg array = [[0, [1, 0, "c4", \sharp, \black]], [0, [0, 0, "c5", \flat, \black]], [1, [0, 0, "e6", \nat, \black]]]; //[pos, [staff, noteType, noteName, accidental, color]]
-	var count, newArray, pos, staff, noteType, noteName, color, white, midiNote, noteClass, octave, oct, note, acc, accidental, col;
+	findEnharmonic {arg array = [[0, [1, 0, "c4", \sharp, \black]], 
+		[0, [0, 0, "c5", \flat, \black]], [1, [0, 0, "e6", \nat, \black]]]; 
+		//[pos, [staff, noteType, noteName, accidental, color]]
+	var count, newArray, pos, staff, noteType, noteName, color, white, midiNote;
+	var noteClass, octave, oct, note, acc, accidental, col;
 	count = 0;
 	newArray = [];
 
@@ -435,15 +495,18 @@ fontArr.do({|item, index|
 	{(note < -6).and(note >= -12)} {note = note + 7; oct = 2}
 	{note < -13} {note = note + 14; oct = 4};
 
-	newArray = newArray.add([pos, [staff, noteType, note, acc, oct, col]]); //[pos, [staff, noteType, note, acc, oct, color]];
+	newArray = newArray.add([pos, [staff, noteType, note, acc, oct, col]]); 
+	//[pos, [staff, noteType, note, acc, oct, color]];
 	count = count + 1;
 	});
 
 	this.findNotes(newArray);
 	}
 
-	enharmonic {arg array = [[0, [1, 0, "c4", \sharp, \black]], [0, [0, 0, "c5", \flat, \black]], [1, [0, 0, "e6", \nat, \black]]];
-	var count, newArray, pos, staff, noteType, noteName, color, accidental, newStaff, adjStaff;
+	enharmonic {arg array = [[0, [1, 0, "c4", \sharp, \black]], 
+		[0, [0, 0, "c5", \flat, \black]], [1, [0, 0, "e6", \nat, \black]]];
+	var count, newArray, pos, staff, noteType, noteName, color, accidental;
+	var newStaff, adjStaff;
 	count = 0;
 	newArray = [];
 
@@ -470,7 +533,9 @@ fontArr.do({|item, index|
 
 	}
 
-	chromatic {arg array = [[0, [1, 0, "c#4", 0]], [0, [0, 0, "c#5", 1]], [1, [0, 0, "e6", 0]]]; //	[pos, [staff, noteType, noteName, color]]
+	chromatic {arg array = [[0, [1, 0, "c#4", 0]], [0, [0, 0, "c#5", 1]], 
+		[1, [0, 0, "e6", 0]]]; 
+		//	[pos, [staff, noteType, noteName, color]]
 	var count, newArray, pos, staff, noteType, noteName, color, newStaff, adjStaff;
 	count = 0;
 	newArray = [];
@@ -524,7 +589,8 @@ fontArr.do({|item, index|
 	if(noteType[count].notNil, {typeNote = noteType[count]}, {typeNote = 0});
 	if(color[count].notNil, {whichColor = color[count]}, {whichColor = \black});
 
-	array = array.add([position, [whichStaff, typeNote, midiNote[count].midicnote, color[count]]]);
+	array = array.add([position, [whichStaff, typeNote, 
+	midiNote[count].midicnote, color[count]]]);
 	count = count+1;
 	});
 
@@ -586,13 +652,16 @@ fontArr.do({|item, index|
 
 	click1 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click1";
 	if(w2.notNil, {w2.close});
-	 w2 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
+	 w2 = Window(name, 
+	 Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize),
+	  (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
 	w2.view.background_( Color.white );
 	white1 = {
 		if(w2.notNil, {
 			w2.drawFunc = {
 	        Pen.color = Color.new255(238, 233, 233);
-	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+	        Pen.fillOval( Rect( (10*resize)*winAdj, 
+	        (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
 			};
 	         w2.refresh;
 	         });
@@ -601,7 +670,8 @@ fontArr.do({|item, index|
 		if(w2.notNil, {
 		w2.drawFunc = {
 	        Pen.color = Color.new255(255, 255, 0).alpha_(alpha);
-	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, 
+	        (230*resize)*winAdj, (230*resize)*winAdj ) );
 	    };
 	     w2.refresh;});
 	    };
@@ -614,11 +684,13 @@ fontArr.do({|item, index|
 	var timerWindow, oldTime, t, numBox;
 	oldTime = newTime;
 	if(timerWindow.notNil, {timerWindow.close});
-	 //timerWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((205*rightWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (180*resize)*winAdj ), border: false).front;
 	 //timer goes left automatically
-	timerWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((205*rightWin)*resize) + (w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (180*resize)*winAdj ), border: false).front;
+	timerWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((205*rightWin)*resize) + 
+	(w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj,
+	(180*resize)*winAdj ), border: false).front;
 	timerWindow.view.background_( Color.white );
-	numBox = NumberBox(timerWindow, Rect( (30*resize)*winAdj, (30*resize)*winAdj, (200*resize)*winAdj, (110*resize)*winAdj));
+	numBox = NumberBox(timerWindow, Rect( (30*resize)*winAdj, (30*resize)*winAdj, 
+	(200*resize)*winAdj, (110*resize)*winAdj));
 	numBox.font_(Font("Helvetica", (100*resize)*winAdj));
 	numBox.value = newTime;
 	numBox.action = {arg field; field.value.postln; };
@@ -626,7 +698,8 @@ fontArr.do({|item, index|
 	//w.front;
 	timerWindow.front;
 	if(w3.notNil, {w3.front});
-	t = Routine({ (newTime/0.1).do({oldTime = oldTime - 0.1; numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
+	t = Routine({ (newTime/0.1).do({oldTime = oldTime - 0.1; 
+		numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
 	(0.1*clockAdj).yield;
 	if(timerWindow.notNil, {
 	timerWindow.close;
@@ -640,9 +713,12 @@ fontArr.do({|item, index|
 	oldTime = newTime;
 	if(stopWatchWindow.notNil, {stopWatchRoutine.stop; stopWatchWindow.close});
 	 //timer goes left automatically
-	stopWatchWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((215*rightWin)*resize) + (w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (295*resize)*winAdj, (180*resize)*winAdj ), border: false).front;
+	stopWatchWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((215*rightWin)*resize) +
+	(w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (295*resize)*winAdj, 
+	(180*resize)*winAdj ), border: false).front;
 	stopWatchWindow.view.background_( Color.white );
-	numBox = NumberBox(stopWatchWindow, Rect( (10*resize)*winAdj, (30*resize)*winAdj, (270*resize)*winAdj, (110*resize)*winAdj));
+	numBox = NumberBox(stopWatchWindow, Rect( (10*resize)*winAdj, (30*resize)*winAdj, 
+	(270*resize)*winAdj, (110*resize)*winAdj));
 	numBox.font_(Font("Helvetica", (100*resize)*winAdj));
 	numBox.value = newTime;
 	numBox.action = {arg field; field.value.postln; };
@@ -650,7 +726,8 @@ fontArr.do({|item, index|
 	//w.front;
 	stopWatchWindow.front;
 	if(w3.notNil, {w3.front});
-	stopWatchRoutine = Routine({ inf.do({oldTime = oldTime + 0.1; numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
+	stopWatchRoutine = Routine({ inf.do({oldTime = oldTime + 0.1; 
+		numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
 	(0.1*clockAdj).yield;
 	if(stopWatchWindow.notNil, {
 	stopWatchWindow.close;
@@ -659,7 +736,8 @@ fontArr.do({|item, index|
 
 	}
 
-	tag {arg string="Pedal",letterType="Helvetica", letterSize=60, widthAdj = 1, heightAdj = 0.1;
+	tag {arg string="Pedal",letterType="Helvetica", letterSize=60, 
+		widthAdj = 1, heightAdj = 0.1;
 	var tagBox,sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
 	if(tagWindow.notNil, {tagWindow.close});
 	sizeLetter = letterSize*resize;
@@ -668,7 +746,8 @@ fontArr.do({|item, index|
 	textArr = w.bounds.asArray;
 	widthPos = (((textArr[2]-textWidth)/2)*widthAdj)+textArr[0];
 	heightPos = (((textArr[3]-textHeight)/2)*heightAdj)+textArr[1];
-	tagWindow = Window("Tag", Rect( widthPos, heightPos, textWidth, textHeight), border: false).front;
+	tagWindow = Window("Tag", Rect( widthPos, heightPos, textWidth, 
+	textHeight), border: false).front;
 	tagWindow.view.background_( Color.white );
 	tagBox = StaticText(tagWindow, Rect( 0, 0, textWidth, textHeight));
 	tagBox.font_(Font(letterType, sizeLetter)).string_(string).align_(\centered);
@@ -680,7 +759,8 @@ fontArr.do({|item, index|
 	});
 	}
 
-	text {arg string="Hello", letterType="Helvetica", letterSize=90, widthAdj = 0, heightAdj = 0.1, color=Color.black;
+	text {arg string="Hello", letterType="Helvetica", letterSize=90, 
+		widthAdj = 0, heightAdj = 0.1, color=Color.black;
 	var sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
 	sizeLetter = letterSize*resize;
 	textWidth = string.charPix(sizeLetter);
@@ -688,10 +768,12 @@ fontArr.do({|item, index|
 	textArr = w.bounds.asArray;
 	widthPos = (((textArr[2]-textWidth)/2)*widthAdj);
 	heightPos = (((textArr[3]-textHeight)/2)*heightAdj.linlin(0,2,2,0));
-	text.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
+	text.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(
+	Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
 	}
 
-	text2 {arg string="Hello", letterType="Helvetica", letterSize=90, widthAdj = 0, heightAdj = 0.1, color=Color.black;
+	text2 {arg string="Hello", letterType="Helvetica", letterSize=90, widthAdj = 0, 
+		heightAdj = 0.1, color=Color.black;
 	var sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
 	sizeLetter = letterSize*resize;
 	textWidth = string.charPix(sizeLetter);
@@ -699,10 +781,12 @@ fontArr.do({|item, index|
 	textArr = w.bounds.asArray;
 	widthPos = (((textArr[2]-textWidth)/2)*widthAdj);
 	heightPos = (((textArr[3]-textHeight)/2)*heightAdj.linlin(0,2,2,0));
-	text2.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
+	text2.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(
+	Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
 	}
 
-	expression {arg string="F", letterType="Sonora", letterSize=120, pos = 1, heightAdj = 1.15, color=Color.black;
+	expression {arg string="F", letterType="Sonora", letterSize=120, pos = 1, 
+		heightAdj = 1.15, color=Color.black;
 	var sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
 	sizeLetter = letterSize*resize;
 	textWidth = string.charPix(sizeLetter);
@@ -710,7 +794,8 @@ fontArr.do({|item, index|
 	textArr = w.bounds.asArray;
 	widthPos = ((35*resize*(pos-1))+(75*resize));
 	heightPos = (((textArr[3]-textHeight)/2)*heightAdj.linlin(0,2,2,0));
-	express.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
+	express.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(
+	Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
 	}
 
 	textClose {
@@ -762,12 +847,14 @@ fontArr.do({|item, index|
 
 	click2 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click2";
 	if(w3.notNil, {w3.close});
-	 w3 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
+	 w3 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
+	 (winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
 	w3.view.background_( Color.white );
 	white2 = {if(w3.notNil, {
 			w3.drawFunc = {
 	        Pen.color = Color.new255(238, 233, 233);
-	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+	         (230*resize)*winAdj ) );
 			};
 	         w3.refresh;
 	         });
@@ -776,7 +863,8 @@ fontArr.do({|item, index|
 		if(w3.notNil, {
 		w3.drawFunc = {
 	        Pen.color = Color.new255(255, 99, 71).alpha_(alpha);
-	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+	         (230*resize)*winAdj ) );
 	    };
 	     w3.refresh;});
 	     };
@@ -812,12 +900,14 @@ fontArr.do({|item, index|
 	//two more clicks
 	click3 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click3";
 	if(w4.notNil, {w4.close});
-	 w4 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
+	 w4 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
+	 (winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
 	w4.view.background_( Color.white );
 	white3 = {if(w4.notNil, {
 			w4.drawFunc = {
 	        Pen.color = Color.new255(238, 233, 233);
-	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj,
+	         (230*resize)*winAdj ) );
 			};
 	         w4.refresh;
 	         });
@@ -826,7 +916,8 @@ fontArr.do({|item, index|
 		if(w4.notNil, {
 		w4.drawFunc = {
 	        Pen.color = Color.new255(80, 130, 30).alpha_(alpha);
-	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, (230*resize)*winAdj ) );
+	        Pen.fillOval( Rect( (10*resize)*winAdj, (10*resize)*winAdj, (230*resize)*winAdj, 
+	        (230*resize)*winAdj ) );
 	    };
 	     w4.refresh;});
 	     };
@@ -863,12 +954,15 @@ fontArr.do({|item, index|
 
 	click4 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, scaleSize=1, name="click4";
 	if(w5.notNil, {w5.close});
-	 w5 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize), (250*(resize*scaleSize))*winAdj, (250*(resize*scaleSize))*winAdj ), border: border).front;
+	 w5 = Window(name, Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
+	 (winAdd*resize), (250*(resize*scaleSize))*winAdj, (250*(resize*scaleSize))*winAdj ), 
+	 border: border).front;
 	w5.view.background_( Color.white );
 	white4 = {if(w5.notNil, {
 			w5.drawFunc = {
 	        Pen.color = Color.new255(238, 233, 233);
-	        Pen.fillOval( Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
+	        Pen.fillOval( Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj,
+	         (230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
 			};
 	         w5.refresh;
 	         });
@@ -877,7 +971,8 @@ fontArr.do({|item, index|
 		if(w5.notNil, {
 		w5.drawFunc = {
 	        Pen.color = Color.new255(0, 100, 140).alpha_(alpha);
-	        Pen.fillOval( Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
+	        Pen.fillOval( Rect( (10*(resize*scaleSize))*winAdj, (10*(resize*scaleSize))*winAdj,
+	         (230*(resize*scaleSize))*winAdj, (230*(resize*scaleSize))*winAdj));
 	    };
 	     w5.refresh;});};
 	white4.value;
@@ -942,13 +1037,3 @@ fontArr.do({|item, index|
 
 }
 
-//+ SCView {
-//remove {
-//		if(dataptr.notNil,{
-//			parent.prRemoveChild(this);
-//			this.prRemove;
-//			this.prClose;
-//		});
-//	}
-//
-//}

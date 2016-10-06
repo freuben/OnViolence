@@ -18,7 +18,8 @@ NodePT {
 		c = Buffer.alloc(s, windowSize, 1, 1);
 		
 		y = NodeProxy.audio(s, 1);
-		y.source = {arg bus=1, vol=1, maxDelay=30, delayTime=0.0; DelayL.ar(AudioIn.ar(bus, vol), maxDelay, delayTime);}
+		y.source = {arg bus=1, vol=1, maxDelay=30, delayTime=0.0; 
+			DelayL.ar(AudioIn.ar(bus, vol), maxDelay, delayTime);}
 		
 		}
 
@@ -100,7 +101,10 @@ NodePT {
 			
 				b.getn(0,window,{|msg| f = msg});
 				c.getn(0,window,{|msg| j = msg}); 
-				f.do{|item, index| if(item != 0, {magnitudes = magnitudes.add(item); myfreq = myfreq.add(index)})};
+				f.do{|item, index| if(item != 0, {
+					magnitudes = magnitudes.add(item); 
+					myfreq = myfreq.add(index)
+					})};
 				  	
 					freqs = j[myfreq];
 					freqs = freqs.copyRange(1,freqs.size);
@@ -135,7 +139,8 @@ NodePT {
 	orgIn {arg witchIn=1;
 	audioIn = witchIn;
 	Routine({1.do({
-	y[0] = {arg bus=1, vol=1, maxDelay=30, delayTime=0.0; DelayL.ar(AudioIn.ar(bus, vol), maxDelay, delayTime);};
+	y[0] = {arg bus=1, vol=1, maxDelay=30, delayTime=0.0; 
+		DelayL.ar(AudioIn.ar(bus, vol), maxDelay, delayTime);};
 	0.05.yield;
 	y.set(\bus, audioIn);
 	})}).play;
@@ -157,8 +162,6 @@ NodePT {
 	frequencies {arg func={|item| item};
 	^func.value(this.freqs);
 	}
-	
-	//later add function for magnitudes (not for the moment to save computation)
 	
 }
 
