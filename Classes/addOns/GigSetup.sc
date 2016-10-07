@@ -1,7 +1,7 @@
 GigSetup {
 
 	*new {arg string, energy="never", airport="off", specialApps=[\quit, "Dropbox"],
-		closeOpenApps=true, appExceptions=["Finder", "SuperCollider"];
+		closeOpenApps=true, appExceptions=["Finder", "SuperCollider", "sclang"];
 		^super.new.init(string, energy, airport, specialApps, closeOpenApps, appExceptions);
 	}
 
@@ -54,12 +54,12 @@ GigSetup {
 	}
 
 	*perform {
-		this.new("Perform", "never", "off", [\quit, "Dropbox", "Google Notifier"]);
+		this.new("Perform", "never", "off", [\quit, "Dropbox", "UA Mixer Engine"]);
 	}
 
 
 	*finish {
-		this.new("Finish", "10", "on", [\run, "Dropbox", "Google Notifier"]);
+		this.new("Finish", "10", "on", [\run, "Dropbox", "UA Mixer Engine"]);
 	}
 
 	*energySaver {arg sleepTime="never";
@@ -90,7 +90,7 @@ GigSetup {
 		win.front;
 	}
 
-	*quitOpenApplications {arg exceptions=["Finder", "SuperCollider"];
+	*quitOpenApplications {arg exceptions=["Finder", "SuperCollider", "sclang"];
 		^exceptions.quitOpenApplications.appleScript;
 	}
 
