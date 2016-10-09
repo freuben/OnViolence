@@ -1,16 +1,5 @@
 + String {
 	
-//	airPort {var return;
-//		return = ("do shell script \"networksetup -setairportpower en0 " ++ this ++ "\"");
-//		^return;	
-//	}
-//	
-//	energySaver {arg us, pw; var return, num;
-//		if(this == "never", {num = "0"}, {num = this});
-//		return = ("do shell script \"pmset sleep " ++ num ++ " displaysleep " ++ num ++ "\" user name \"" ++ us ++ "\" password \"" ++ pw ++ "\" with administrator privileges");
-//		^return;
-//	}
-	
 	script {
 		var win, user, text, field;
 	win = Window.new(this, Rect(0,0,300,80).center_( Window.availableBounds.center ));
