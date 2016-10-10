@@ -59,7 +59,8 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
       if(NetAddr.langPort != 57120,{
         (warnMsg).warn; networkError=true;
       }, {
-        this.connect(hostcomputer, port);
+/*        this.connect(hostcomputer, port);*/
+        "Connect dump".postln;
       });
     });
 
@@ -868,6 +869,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
 
   *initClass {
 
+	StartUp.add {
     SynthDef.writeOnce("headmonitor", {arg bufnum=0, out=0, vol = 1.0, gates = 1,
       dec=1.0, pan=0, dur=1.0;
       var signal, signal2, env;
@@ -888,6 +890,9 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
         CombL.ar(hammer, delayTime, delayTime, dur) }));
       Out.ar(out, Pan2.ar(signal*env, (note - 36)/27 - 1, amp));
     });
+    
+	}
+	
   }
 
 }
