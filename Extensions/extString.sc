@@ -16,6 +16,8 @@
     win.front;
   }
 
+  notecps { ^(this.cnotemidi.midicps)}
+
   char88 {var string;
     string = (97..122).asAscii;
     string = "//" ++ string ++ "  " ++ string ++ "  " ++ string ++ "  " ++ "//";

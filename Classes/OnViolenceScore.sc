@@ -7,7 +7,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
   var netConnect, <>rrandArray, <>muteMovie=false, <>lowSen, <>highSen, <>leftSen;
   var <>rightSen;
 
-  *new {arg headOut=0, motorOut=0, motorVol=3, panVal=0, lowVal=0, highVal=127,
+  *score {arg headOut=0, motorOut=0, motorVol=3, panVal=0, lowVal=0, highVal=127,
     leftVal=0, rightVal=127, src, scoreType=\macBookPro15, connect=false,
     hostcomputer="tremmac56150", port;
     ^super.new.initOnViolenceScore(headOut, motorOut, motorVol, panVal, lowVal,
