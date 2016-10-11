@@ -34,6 +34,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 
 	init3 {arg string, left, top, width, height, firstResize;
 		resize = firstResize;
+		GUI.current = GUI.cocoa;
 		w = Window(string, Rect( left, top, width, height )).front;
 		this.firstFunc(w);
 	}

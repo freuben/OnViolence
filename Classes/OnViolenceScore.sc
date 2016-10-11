@@ -9,7 +9,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
 
   *new {arg headOut=0, motorOut=0, motorVol=3, panVal=0, lowVal=0, highVal=127,
     leftVal=0, rightVal=127, src, scoreType=\macBookPro15, connect=false,
-    hostcomputer="tremmac56150", port=57120;
+    hostcomputer="tremmac56150", port;
     ^super.new.initOnViolenceScore(headOut, motorOut, motorVol, panVal, lowVal,
       highVal, leftVal, rightVal, src, scoreType, connect, hostcomputer, port);
   }
@@ -25,6 +25,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
     motorPan = panMotor;
     src = srcID;
     src ?? {src = -1927836118};
+    port ?? {port = NetAddr.langPort};
     s = Server.default;
     clock = AppClock;
     pedalDownMistake = false;
@@ -53,15 +54,14 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
     partials = NodePT(512, 5);  //a partial tracker
 
     netConnect = connect;
-    warnMsg =  "SC lang port in not 57120, close other open applications and restart SC";
+//    warnMsg =  "SC lang port in not 57120, close other open applications and restart SC";
 
     if(netConnect, {
-      if(NetAddr.langPort != 57120,{
-        (warnMsg).warn; networkError=true;
-      }, {
-/*        this.connect(hostcomputer, port);*/
-        "Connect dump".postln;
-      });
+//      if(NetAddr.langPort != 57120,{
+//        (warnMsg).warn; networkError=true;
+//      }, {
+        this.connect(hostcomputer, port);
+//      });
     });
 
     //data for rythmic sections
@@ -205,10 +205,11 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
   connect {arg hostcomputer="tremmac56150", port;
     var ip, stringArr;
 
-    port ?? {port = 57120};
-    ip = hostcomputer.ipAddr(\ethernet);
+    port ?? {port = NetAddr.langPort};
+    hostcomputer ?? {hostcomputer = NetAddr.getHostName};
+    ip = NetAddr.ipAddr(hostcomputer.postln, \ethernet).asString;
     if(ip.notNil, {
-      network = NetAddr(hostcomputer.ipAddr, port);
+      network = NetAddr(ip, port);
       OSCdef(\tempotrack, {|msg, time, addr, recvPort|
         tempo = msg[1].postln;
       }, '/tempo', network);
@@ -819,7 +820,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
     top = score.w.bounds.height - (370*scale) - 100;
     left = score.movie.bounds.left + (50*scale);
     movwin = Window("", Rect(left, top, 300*scale, 370*scale), border:false).front;
-    movwin.view.background_((Color.black));
+    movwin.view.background_(Color.new(0.0,0.0,0.0));
     movwin.alwaysOnTop = true;
     movflow = movwin.addFlowLayout(10@10, 10@10, 0);
 

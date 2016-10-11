@@ -204,7 +204,8 @@ OnViolenceMotor {var s, <out, basicPath, <>motor, sensor, <>lowVal, <>highVal, <
 	var cambio, oldNum1 = 0, oldNum2 = 0;
 	
 	rectArr ?? {rectArr = [-40, 260, 30, 360]};
-	window = Window("Sensor", (rectArr+40).asRect, border:false).background_(Color.white);
+	window = Window("Sensor", (rectArr+40).asRect, border:false);
+	window.view.background_(Color.white);
 	sensorWin = window.front;
 	sensorWin.alwaysOnTop = true;
 	slider = LevelIndicator(sensorWin, Rect(20,sensorWin.bounds.asArray.last-rectArr.last/2,rectArr[2],rectArr[3]));

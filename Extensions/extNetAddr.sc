@@ -6,10 +6,9 @@
 		^result;
 	}
 
-	*ipAddr {arg networkType=\airport;
-		var pipe, lines, line, result, type, hostname;
+	*ipAddr {arg hostname, networkType=\airport;
+		var pipe, lines, line, result, type;
 
-		hostname = this.getHostName;
 		if([\host, \local].includes(hostname.asSymbol).not, {
 
 			pipe = Pipe.new(("ping -c 1 " ++ hostname ++ ".local"), "r");
@@ -42,6 +41,11 @@
 		});
 
 		^result;
+	}
+	
+	* hostIpAddr {var result;
+		result = 	this.ipAddr(this.getHostName);	
+	^result;
 	}
 
 }
