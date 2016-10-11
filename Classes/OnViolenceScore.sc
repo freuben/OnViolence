@@ -54,14 +54,14 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
     partials = NodePT(512, 5);  //a partial tracker
 
     netConnect = connect;
-//    warnMsg =  "SC lang port in not 57120, close other open applications and restart SC";
+    //    warnMsg =  "SC lang port in not 57120, close other open applications and restart SC";
 
     if(netConnect, {
-//      if(NetAddr.langPort != 57120,{
-//        (warnMsg).warn; networkError=true;
-//      }, {
-        this.connect(hostcomputer, port);
-//      });
+      //      if(NetAddr.langPort != 57120,{
+      //        (warnMsg).warn; networkError=true;
+      //      }, {
+      this.connect(hostcomputer, port);
+      //      });
     });
 
     //data for rythmic sections
@@ -120,12 +120,13 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
 
     case
     {type == \macBookPro15} {
-      score = AlgorithmicScore.screenBounds("On Violence");
-      imageScale = 1.1;
-      imageAdj = -10;
-      clickPos = 20;
-      movieScale = 1.6;
-      movieWinScale = 1
+      score = AlgorithmicScore.screenBounds("On Violence", 1.2);
+      imageScale = 0.95;
+      imageAdj = 0;
+      //      imageAdj = -10;
+      clickPos = 14;
+      movieScale = 1.3;
+      movieWinScale = 0.8;
     }
     {type == \macBookAir11} {
       score = AlgorithmicScore.screenBounds("On Violence", 1.2);
@@ -870,30 +871,30 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
 
   *initClass {
 
-	StartUp.add {
-    SynthDef.writeOnce("headmonitor", {arg bufnum=0, out=0, vol = 1.0, gates = 1,
-      dec=1.0, pan=0, dur=1.0;
-      var signal, signal2, env;
-      env = EnvGen.kr(Env.linen(0.0001, dur, dec, 1.0, -4), gates, doneAction: 2);
-      signal = PlayBuf.ar(1, bufnum, 1, doneAction: 2);
-      signal2 = signal*env;
-      Out.ar(out, Pan2.ar(signal2*vol, 0));
-    });
+    StartUp.add {
+      SynthDef.writeOnce("headmonitor", {arg bufnum=0, out=0, vol = 1.0, gates = 1,
+        dec=1.0, pan=0, dur=1.0;
+        var signal, signal2, env;
+        env = EnvGen.kr(Env.linen(0.0001, dur, dec, 1.0, -4), gates, doneAction: 2);
+        signal = PlayBuf.ar(1, bufnum, 1, doneAction: 2);
+        signal2 = signal*env;
+        Out.ar(out, Pan2.ar(signal2*vol, 0));
+      });
 
-    SynthDef.writeOnce("synthPiano", {arg note = 36, out=0, dur=1, amp=1;
-      var delayTime, detune, strike, hammerEnv, hammer, signal, env;
-      env = EnvGen.kr(Env.linen(0.01, dur, 0.1), doneAction:2);
-      hammerEnv = Decay2.ar(Impulse.ar(0.1), 0.008, 0.04);
-      signal = Mix.ar(Array.fill(3, { arg i;
-        detune = #[-0.05, 0, 0.04].at(i);
-        delayTime = 1 / (note + detune).midicps;
-        hammer = LFNoise2.ar(3000, hammerEnv);
-        CombL.ar(hammer, delayTime, delayTime, dur) }));
-      Out.ar(out, Pan2.ar(signal*env, (note - 36)/27 - 1, amp));
-    });
-    
-	}
-	
+      SynthDef.writeOnce("synthPiano", {arg note = 36, out=0, dur=1, amp=1;
+        var delayTime, detune, strike, hammerEnv, hammer, signal, env;
+        env = EnvGen.kr(Env.linen(0.01, dur, 0.1), doneAction:2);
+        hammerEnv = Decay2.ar(Impulse.ar(0.1), 0.008, 0.04);
+        signal = Mix.ar(Array.fill(3, { arg i;
+          detune = #[-0.05, 0, 0.04].at(i);
+          delayTime = 1 / (note + detune).midicps;
+          hammer = LFNoise2.ar(3000, hammerEnv);
+          CombL.ar(hammer, delayTime, delayTime, dur) }));
+        Out.ar(out, Pan2.ar(signal*env, (note - 36)/27 - 1, amp));
+      });
+
+    }
+
   }
 
 }
