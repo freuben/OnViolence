@@ -3,7 +3,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	var clickColor4, white4, taskOn2, synth, synth2, trebleClef, bassClef, altoClef, <>movie;
 	var <>picture, x, y, <>staffArr, <>clefArr, clefFunc, <>storeArrayClef, <>pianoArray, drawLines;
 	var <>staffGap, windowType=1, <>spacing, <>noteAdjust, clearStaffArr,<>clock, text, text2;
-	var <>express, <>tagWindow, <>stopWatchWindow, <>stopWatchRoutine;
+	var <>express, <>tagWindow, <>tagBox, <>stopWatchWindow, <>stopWatchRoutine;
 
 	*new {arg firstResize=1.5, string="score";
 		^super.new.init(firstResize, string);
@@ -654,7 +654,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	}
 
 	click1 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click1", 
-		userView=false;
+		userView=true;
 		var viewRect, newViewRect, winBoundsArr, left, top;
 			
 		if(w2.notNil, {w2.visible = false});
@@ -756,23 +756,36 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	}
 
 	tag {arg string="Pedal",letterType="Helvetica", letterSize=60,
-		widthAdj = 1, heightAdj = 0.1;
-		var tagBox,sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
-		if(tagWindow.notNil, {tagWindow.close});
+		widthAdj = 1, heightAdj = 0.1, extraWin=false;
+		var sizeLetter,textWidth,textHeight, textArr, tagRectArr;
+		var widthPos,heightPos, tagRect, winBoundsArr, left, top;
+		winBoundsArr = w.bounds.asArray;
+		if(tagWindow.notNil, {tagWindow.visible = false});
+		if(tagBox.notNil, {tagBox.string = "";});
 		sizeLetter = letterSize*resize;
 		textWidth = string.charPix(sizeLetter);
 		textHeight = sizeLetter*1.25;
 		textArr = w.bounds.asArray;
 		widthPos = (((textArr[2]-textWidth)/2)*widthAdj)+textArr[0];
 		heightPos = (((textArr[3]-textHeight)/2)*heightAdj)+textArr[1];
-		tagWindow = Window("Tag", Rect( widthPos, heightPos, textWidth,
-			textHeight), border: false).front;
+		tagRect = Rect(widthPos, heightPos, textWidth, textHeight);
+		if(extraWin, {
+		tagWindow = Window("Tag", tagRect, border: false).front;
 		tagWindow.view.background_( Color.white );
 		tagBox = StaticText(tagWindow, Rect( 0, 0, textWidth, textHeight));
+		}, {
+			tagRectArr = tagRect.asArray;
+			left = tagRectArr[0] - winBoundsArr[0];
+			top = (winBoundsArr.last - tagRectArr.last) - 
+			(tagRectArr[1] - winBoundsArr[1]);
+		tagBox = StaticText(w, Rect(left, top, tagRectArr[2], tagRectArr[3]));
+		});
+
 		tagBox.font_(Font(letterType, sizeLetter)).string_(string).align_(\centered);
 	}
 
 	tagClose {
+		tagBox.string = "";
 		if(tagWindow.notNil, {
 			tagWindow.close;
 		});
