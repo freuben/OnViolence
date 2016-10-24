@@ -25,25 +25,22 @@ code::
 GigSetup.perform; //script for performance
 
 s.bootAndMIDI;
-//eobody, setup:
-//1 - left pedal
-//2 - right pedal
-//3 - 3D mainCable
-//4 - 3D white
-//5 - 3D blue
 
+MIDIClient.getUid({arg uid;
+  ~srcID = uid.postln;
+});
 
 //practice mode:
-a = OnViolenceScore(0,0,2,0,55,71,31,49, -1927836118, \macBookAir11Sim, true, "tremmac56150", NetAddr.langPort); //start Score. arg: outHead, outMotor, volMotor, panMotor, lowVal, highVal, leftVal, rightVal, srcID, scoreType, connect, hostcomputer, port;
+a = OnViolenceScore.score(0,0,2,0,55,71,31,49, ~srcID, \macBookAir11Sim, true, "tremmac56150", NetAddr.langPort); //start Score. arg: outHead, outMotor, volMotor, panMotor, lowVal, highVal, leftVal, rightVal, srcID, scoreType, connect, hostcomputer, port;
 
 a.muteMovie = true; //mute movies
 a.rrandArray; //print array from other computer
 //a.tempo = (156/176); //changeTempo
 
-a = OnViolenceScore(0,0,2,0,55,71,31,49, scoreType: \macBookPro15);
+a = OnViolenceScore.score(0,0,2,0,55,71,31,49, scoreType: \macBookPro15);
 
 
-a = OnViolenceScore(0,0,2,0,55,71,31,49, -1927836118, \macBookAir11Sim, false, "federicoreuben", NetAddr.langPort); //start Score. arg: outHead, outMotor, volMotor, panMotor, lowVal, highVal, leftVal, rightVal, srcID, scoreType, connect, hostcomputer, port;
+a = OnViolenceScore.score(0,0,2,0,55,71,31,49, -1927836118, \macBookAir11Sim, false, "federicoreuben", NetAddr.langPort); //start Score. arg: outHead, outMotor, volMotor, panMotor, lowVal, highVal, leftVal, rightVal, srcID, scoreType, connect, hostcomputer, port;
 
 
 a.show; //show score if you hide it with "h"
@@ -123,7 +120,7 @@ a.remove;
 
 //concert version
 
-a = OnViolenceScore(0,1,1.5,0,55,71,49,31); //start Score. args: perfMode, headOut, adjScore
+a = OnViolenceScore.score(0,1,1.5,0,55,71,49,31); //start Score. args: perfMode, headOut, adjScore
 
 //starts MIDI pedals and comunication with other computer
 a.startPedals;
