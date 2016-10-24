@@ -3,7 +3,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	var clickColor4, white4, taskOn2, synth, synth2, trebleClef, bassClef, altoClef, <>movie;
 	var <>picture, x, y, <>staffArr, <>clefArr, clefFunc, <>storeArrayClef, <>pianoArray, drawLines;
 	var <>staffGap, windowType=1, <>spacing, <>noteAdjust, clearStaffArr,<>clock, text, text2;
-	var <>express, <>tagWindow, <>tagBox, <>stopWatchWindow, <>stopWatchRoutine;
+	var <>express, <>tagWindow, <>tagBox, <>stopWatchWindow, <>stopWatchRoutine, <>numBox;
 
 	*new {arg firstResize=1.5, string="score";
 		^super.new.init(firstResize, string);
@@ -700,31 +700,27 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	}
 
 	timer {arg newTime=10, clockAdj=1,winAdj = 0.8, winAdd = 20, rightWin=1;
-		var timerWindow, oldTime, t, numBox;
-		oldTime = newTime;
-		if(timerWindow.notNil, {timerWindow.close});
-		//timer goes left automatically
-		timerWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((205*rightWin)*resize) +
-			(w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj,
-			(180*resize)*winAdj ), border: false).front;
-		timerWindow.view.background_( Color.white );
-		numBox = NumberBox(timerWindow, Rect( (30*resize)*winAdj, (30*resize)*winAdj,
-			(200*resize)*winAdj, (110*resize)*winAdj));
-		numBox.font_(Font("Helvetica", (100*resize)*winAdj));
-		numBox.value = newTime;
-		numBox.action = {arg field; field.value.postln; };
-
-		//w.front;
-		timerWindow.front;
-		if(w3.notNil, {w3.front});
-		t = Routine({ (newTime/0.1).do({oldTime = oldTime - 0.1;
-			numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
-		(0.1*clockAdj).yield;
-		if(timerWindow.notNil, {
-			timerWindow.close;
-		});
-		}).play(clock);
-
+	var timerWindow, oldTime, t, numBox;
+	oldTime = newTime;
+	if(timerWindow.notNil, {timerWindow.close});
+	 //timer goes left automatically
+	timerWindow = Window( "Timer", Rect( w.bounds.asArray[2]-((205*rightWin)*resize) + (w.bounds.asArray[0]-(64)), w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (180*resize)*winAdj ), border: false).front; 
+	timerWindow.view.background_( Color.white );
+	numBox = NumberBox(timerWindow, Rect( (30*resize)*winAdj, (30*resize)*winAdj, (200*resize)*winAdj, (110*resize)*winAdj));
+	numBox.font_(Font("Helvetica", (100*resize)*winAdj));
+	numBox.value = newTime;
+	numBox.action = {arg field; field.value.postln; };
+	
+	//w.front;
+	timerWindow.front;
+	if(w3.notNil, {w3.front});
+	t = Routine({ (newTime/0.1).do({oldTime = oldTime - 0.1; numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
+	(0.1*clockAdj).yield;
+	if(timerWindow.notNil, {
+	timerWindow.close;
+	});
+	}).play(clock);
+	
 	}
 
 	stopwatch {arg newTime=0, clockAdj=1,winAdj = 0.8, winAdd = 20, rightWin=1;
@@ -744,7 +740,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 
 		//w.front;
 		stopWatchWindow.front;
-		if(w3.notNil, {w3.front});
+		if(w3.notNil, {w3.visible = true;});
 		stopWatchRoutine = Routine({ inf.do({oldTime = oldTime + 0.1;
 			numBox.value_(oldTime.round(0.1));  (0.1*clockAdj).yield; });
 		(0.1*clockAdj).yield;
