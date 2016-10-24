@@ -115,7 +115,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
   }
 
   displayScore {arg page=1, type=\macBookPro15;
-    var gowin, gotext, gofunc, clickPos;
+    var gowin, gotext, gofunc, clickPos, clickHeight;
     partials.startsynth(1); //use AudioIn to track loadest partials
 
     case
@@ -125,6 +125,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
       imageAdj = 0;
       //      imageAdj = -10;
       clickPos = 14;
+      clickHeight = -120;
       movieScale = 1.3;
       movieWinScale = 0.8;
     }
@@ -133,6 +134,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
       imageScale = 0.9;
       imageAdj = -35;
       clickPos = 14;
+      clickHeight = -120;
       movieScale = 1.2;
       movieWinScale = 0.8;
     }
@@ -141,6 +143,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
       imageScale = 0.9;
       imageAdj = -35;
       clickPos = 13.16;
+      clickHeight = -120;
       movieScale = 1.2;
       movieWinScale = 0.8;
     };
@@ -189,12 +192,11 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
 
     {
       0.2.yield;
-      score.click4(winAdd: 0, leftWin: clickPos, scaleSize:0.4, name:"pedal");
+      score.click4(winAdd: clickHeight, leftWin: clickPos, scaleSize:0.4, name:"pedal", userView:true);
       rightWin = 1.2;
       0.2.yield;
       score.w.view.keyDownAction = gofunc;
-      score.w5.alwaysOnTop = true;
-      score.w5.view.keyDownAction = gofunc;
+      //score.w5.view.keyDownAction = gofunc;
       0.2.yield;
       this.startPedals;
       0.5.yield;

@@ -653,12 +653,28 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 		}).play(clock);
 	}
 
-	click1 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click1";
-		if(w2.notNil, {w2.close});
-		w2 = Window(name,
-			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+(winAdd*resize),
-				(250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
-		w2.view.background_( Color.white );
+	click1 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click1", 
+		userView=false;
+		var viewRect, newViewRect, winBoundsArr, left, top;
+			
+		if(w2.notNil, {w2.visible = false});
+		
+		winBoundsArr = w.bounds.asArray;
+		
+		viewRect = [winBoundsArr[0]+((80*leftWin)*resize), 
+		winBoundsArr[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj];
+		
+		if(userView, { 
+			left = viewRect[0] - winBoundsArr[0];
+			top = (winBoundsArr.last - viewRect.last) - 
+			(viewRect[1] - winBoundsArr[1]);
+			newViewRect = Rect(left, top, viewRect[2], viewRect[3]);
+		w2 = UserView(w, newViewRect);
+		w2.background_( Color.white );
+		}, {
+		w2 = Window(name, viewRect.asRect, border: border).front;
+		w2.view.background_( Color.white );			
+		});
 		white1 = {
 			if(w2.notNil, {
 				w2.drawFunc = {
@@ -679,8 +695,8 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 				w2.refresh;});
 		};
 		white1.value;
-		w2.front;
-		if(w3.notNil, {w3.front});
+		w2.visible = true;
+		if(w3.notNil, {w3.visible = true;});
 	}
 
 	timer {arg newTime=10, clockAdj=1,winAdj = 0.8, winAdd = 20, rightWin=1;
@@ -836,7 +852,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 
 	click1Close {
 		if(w2.notNil, {
-			w2.close;
+			w2.visible = false;
 			w2 = nil;
 		});
 	}
@@ -848,12 +864,28 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 		})}).play(clock);
 	}
 
-	click2 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click2";
-		if(w3.notNil, {w3.close});
-		w3 = Window(name,
-			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
-				(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
-		w3.view.background_( Color.white );
+	click2 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click2", userView=false;
+		var viewRect, newViewRect, winBoundsArr, left, top;
+			
+		if(w3.notNil, {w3.visible = false});
+		
+		winBoundsArr = w.bounds.asArray;
+		
+		viewRect = [winBoundsArr[0]+((80*leftWin)*resize), 
+		winBoundsArr[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj];
+		
+		if(userView, { 
+			left = viewRect[0] - winBoundsArr[0];
+			top = (winBoundsArr.last - viewRect.last) - 
+			(viewRect[1] - winBoundsArr[1]);
+			newViewRect = Rect(left, top, viewRect[2], viewRect[3]);
+		w3 = UserView(w, newViewRect);
+		w3.background_( Color.white );
+		}, {
+		w3 = Window(name, viewRect.asRect, border: border).front;
+		w3.view.background_( Color.white );			
+		});
+
 		white2 = {if(w3.notNil, {
 			w3.drawFunc = {
 				Pen.color = Color.new255(238, 233, 233);
@@ -877,8 +909,8 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 		white2.value;
 
 		//w.front;
-		w3.front;
-		if(w2.notNil, {w2.front});
+		w3.visible = true;
+		if(w2.notNil, {w2.visible = true});
 	}
 
 	click2On {clickColor2.value;
@@ -904,12 +936,29 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	}
 
 	//two more clicks
-	click3 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click3";
-		if(w4.notNil, {w4.close});
-		w4 = Window(name,
-			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
-				(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj ), border: border).front;
-		w4.view.background_( Color.white );
+	click3 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, name="click3", 
+		userView=false;
+		var viewRect, newViewRect, winBoundsArr, left, top;
+			
+		if(w4.notNil, {w4.visible = false});
+		
+		winBoundsArr = w.bounds.asArray;
+		
+		viewRect = [winBoundsArr[0]+((80*leftWin)*resize), 
+		winBoundsArr[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj];
+		
+		if(userView, { 
+			left = viewRect[0] - winBoundsArr[0];
+			top = (winBoundsArr.last - viewRect.last) - 
+			(viewRect[1] - winBoundsArr[1]);
+			newViewRect = Rect(left, top, viewRect[2], viewRect[3]);
+		w4 = UserView(w, newViewRect);
+		w4.background_( Color.white );
+		}, {
+		w4 = Window(name, viewRect.asRect, border: border).front;
+		w4.view.background_( Color.white );			
+		});
+
 		white3 = {if(w4.notNil, {
 			w4.drawFunc = {
 				Pen.color = Color.new255(238, 233, 233);
@@ -933,7 +982,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 		white3.value;
 
 		//w.front;
-		w4.front;
+		w4.visible = true;
 		//if(w2.notNil, {w2.front});
 	}
 
@@ -954,20 +1003,36 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 
 	click3Close {
 		if(w4.notNil, {
-			w4.close;
+			w4.visible = false;
 			w4 = nil;
 		});
 	}
 
 	//
 
-	click4 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, scaleSize=1, name="click4";
-		if(w5.notNil, {w5.close});
-		w5 = Window(name,
-			Rect( w.bounds.asArray[0]+((80*leftWin)*resize), w.bounds.asArray[1]+
-				(winAdd*resize), (250*(resize*scaleSize))*winAdj, (250*(resize*scaleSize))*winAdj ),
-			border: border).front;
-		w5.view.background_( Color.white );
+	click4 {arg winAdj = 0.8, winAdd = 20, leftWin=1, border=true, scaleSize=1, name="click4", 
+		userView=false;
+		var viewRect, newViewRect, winBoundsArr, left, top;
+			
+		if(w5.notNil, {w5.visible = false});
+		
+		winBoundsArr = w.bounds.asArray;
+		
+		viewRect = [winBoundsArr[0]+((80*leftWin)*resize), 
+		winBoundsArr[1]+(winAdd*resize), (250*resize)*winAdj, (250*resize)*winAdj];
+		
+		if(userView, { 
+			left = viewRect[0] - winBoundsArr[0];
+			top = (winBoundsArr.last - viewRect.last) - 
+			(viewRect[1] - winBoundsArr[1]);
+			newViewRect = Rect(left, top, viewRect[2], viewRect[3]);
+		w5 = UserView(w, newViewRect);
+		w5.background_( Color.white );
+		}, {
+		w5 = Window(name, viewRect.asRect, border: border).front;
+		w5.view.background_( Color.white );			
+		});
+
 		white4 = {if(w5.notNil, {
 			w5.drawFunc = {
 				Pen.color = Color.new255(238, 233, 233);
@@ -988,7 +1053,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 				};
 				w5.refresh;});};
 		white4.value;
-		w5.front;
+		w5.visible = true;
 	}
 
 	click4On {clickColor4.value;
@@ -1008,7 +1073,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 
 	click4Close {
 		if(w5.notNil, {
-			w5.close;
+			w5.visible = true;
 			w5 = nil;
 		});
 	}
@@ -1025,10 +1090,10 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 
 	close {
 		if(w.notNil, {w.close});
-		if(w2.notNil, {w2.close});
-		if(w3.notNil, {w3.close});
-		if(w4.notNil, {w4.close});
-		if(w5.notNil, {w5.close});
+		if(w2.notNil, {w2.visible = false});
+		if(w3.notNil, {w3.visible = false});
+		if(w4.notNil, {w4.visible = false});
+		if(w5.notNil, {w2.visible = false});
 	}
 
 	hide {
