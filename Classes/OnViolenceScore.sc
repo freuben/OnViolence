@@ -79,7 +79,7 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
 
         motorSound = OnViolenceMotor(motorOut, motorVol, motorPan,
           rectArr: ([ -40, (((score.w.bounds.height/2) - (252*score.resize/2+60)))] ++
-            ([ 21, 252 ]*score.resize)) );
+            ([ 21, 252 ]*score.resize)), extraWin: score.w);
       }.fork(clock);
     });
   }

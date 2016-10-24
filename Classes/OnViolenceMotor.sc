@@ -5,13 +5,13 @@ OnViolenceMotor {var s, <out, basicPath, <>motor, sensor, <>lowVal, <>highVal, <
   var <>volMotor, <synth1, <synth2, <>sensorWin, <slider, <window, <>panMotor;
 
   *new {arg outBus=0, vol=1, panMotor=0, lowVal=0, highVal=127, leftVal=0, rightVal=127,
-    pathName, rectArr, playNode=true;
+    pathName, rectArr, playNode=true, extraWin;
     ^super.new.initOnViolenceMotor(outBus, vol, panMotor, lowVal, highVal, leftVal, rightVal,
-      pathName, rectArr, playNode);
+      pathName, rectArr, playNode, extraWin);
   }
 
   initOnViolenceMotor {arg outBus, vol, pan, valLow, valHigh, valLeft,valRight,pathName,
-    rectArr, playNode;
+    rectArr, playNode, otherWindow;
     var sensorPitch, thisPath;
     out = outBus;
     volMotor = vol;
@@ -38,7 +38,7 @@ OnViolenceMotor {var s, <out, basicPath, <>motor, sensor, <>lowVal, <>highVal, <
     newMacroArray2 = sensorPitch[1];
 
     this.readyToStart;
-    this.oscRespNode(rectArr);
+    this.oscRespNode(rectArr, otherWindow);
 
   }
 
@@ -225,19 +225,24 @@ OnViolenceMotor {var s, <out, basicPath, <>motor, sensor, <>lowVal, <>highVal, <
 
   }
 
-  oscRespNode {arg rectArr;
-    var cambio, oldNum1 = 0, oldNum2 = 0;
+  oscRespNode {arg rectArr, extraWindow;
+    var cambio, oldNum1 = 0, oldNum2 = 0, levelRect;
 
     rectArr ?? {rectArr = [-40, 260, 30, 360]};
-    window = Window("Sensor", (rectArr+40).asRect, border:false);
-    window.view.background_(Color.white);
-    sensorWin = window.front;
-    sensorWin.alwaysOnTop = true;
-    slider = LevelIndicator(sensorWin,
-      Rect(20,sensorWin.bounds.asArray.last-rectArr.last/2,rectArr[2],rectArr[3]);
-    );
+    if(extraWindow.isNil, {
+      window = Window("Sensor", (rectArr+40).asRect, border:false);
+      window.view.background_(Color.white);
+      sensorWin = window.front;
+      sensorWin.alwaysOnTop = true;
+    }, {
+      sensorWin = extraWindow;
+    });
+    levelRect = Rect(20,sensorWin.bounds.asArray.last-rectArr.last/2,rectArr[2], rectArr[3]);
+    slider = LevelIndicator(sensorWin, levelRect);
     slider.numTicks = 3;
     slider.numMajorTicks = 3;
+
+    if(extraWindow.notNil, {window = slider});
 
     //OSCresponderNode listens to id 4 and 5
     oscNode = OSCresponderNode(s.addr,'/tr',{arg time,responder,msg;
