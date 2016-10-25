@@ -415,11 +415,13 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
         });
         this.funcChooseSample(randNum);
         color = Array.fill(selectPitch.size, {\black});
-        {score.score([\piano], 1, 1.3);
+        {
+	     score.score([\piano], 1, 1.3);
           score.expression("f");
           score.notes(selectPitch, (0,1..selectPitch.size), color);
           ("funcAlgoScore: " ++ sample ++ " : time : ").post;
-          score.timer((start+end).postln*tempo2, 0.99, rightWin:rightWin);}.defer;
+          score.timer((start+end).postln*tempo2, 0.99, rightWin:rightWin);
+          }.defer;
         (start*tempo2).yield;
         selectPitch.size.do({
           (algoTimes[step]*tempo2).yield;
