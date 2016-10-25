@@ -3,7 +3,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	var clickColor4, white4, taskOn2, synth, synth2, trebleClef, bassClef, altoClef, <>movie;
 	var <>picture, x, y, <>staffArr, <>clefArr, clefFunc, <>storeArrayClef, <>pianoArray, drawLines;
 	var <>staffGap, windowType=1, <>spacing, <>noteAdjust, clearStaffArr,<>clock, text, text2;
-	var <>express, <>tagWindow, <>tagBox, <>stopWatchWindow, <>stopWatchRoutine;
+	var <>express, <>tagWindow, <>tagBox, <>stopWatchWindow, <>stopWatchRoutine, timerWindow;
 	var <>numBox, <>ttimer;
 
 	*new {arg firstResize=1.5, string="score";
@@ -700,7 +700,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 		if(w3.notNil, {w3.visible = true;});
 	}
 
-	timer {arg newTime=10, clockAdj=1,winAdj = 0.8, winAdd = 20, rightWin=1;
+	timer {arg newTime=10, clockAdj=1,winAdj = 0.8, winAdd = 20, rightWin=1, extraWin=false;
 	var oldTime, t, winBoundsArr, left, top; 
 	var timerRect, timerRectArr, boxRect;
 	
@@ -713,27 +713,44 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
 	});
 	if(numBox.notNil, {numBox.remove; numBox = nil});
 	
+	if(timerWindow.notNil, {
+	timerWindow.close;
+	});
+	
 	timerRect = Rect(winBoundsArr[2]-((205*rightWin)*resize) + (winBoundsArr[0]-(64)), winBoundsArr[1]+(winAdd*resize), (250*resize)*winAdj, (180*resize)*winAdj);
 	
-	timerRectArr = timerRect.asArray;
+	if(extraWin, {
+	boxRect = Rect( w.bounds.asArray[2]-((205*rightWin)*resize) + (w.bounds.asArray[0]-(64)), 
+	w.bounds.asArray[1]+(winAdd*resize), (250*resize)*winAdj, (180*resize)*winAdj );
+	timerWindow = Window( "Timer", boxRect).front; 
+	timerWindow.view.background_( Color.white );
+	numBox = NumberBox(timerWindow, Rect( (30*resize)*winAdj, (30*resize)*winAdj, (200*resize)*winAdj, (110*resize)*winAdj));
+	}, {
+		timerRectArr = timerRect.asArray;
 			left = (timerRectArr[0]+((30*resize)*winAdj)) - winBoundsArr[0];
 			top = (winBoundsArr.last - timerRectArr.last) - 
 			((timerRectArr[1]- ((30*resize)*winAdj)) - winBoundsArr[1]);
 	boxRect = Rect(left, top, (200*resize)*winAdj, (110*resize)*winAdj);
 	
-	numBox = NumberBox(w, boxRect);
+	numBox = NumberBox(w, boxRect);	
+	});
+	
 	numBox.font_(Font("Helvetica", (100*resize)*winAdj));
 	numBox.value = newTime;
 	numBox.action = {arg field; field.value.postln; };
 	
 	if(w3.notNil, {w3.visible = true;});
-	ttimer = Routine({ (newTime/0.1).do({
+	ttimer = Routine({ 
+		(newTime/0.1).do({
 		oldTime = oldTime - 0.1; 
 		if(numBox.notNil, {numBox.value_(oldTime.round(0.1));});  
 		(0.1*clockAdj).yield; });
 	(0.1*clockAdj).yield;
 	
 	if(numBox.notNil, {numBox.remove; numBox = nil});
+	if(timerWindow.notNil, {
+	timerWindow.close;
+	});
 
 	}).play(clock);
 	
