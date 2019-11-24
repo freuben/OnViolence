@@ -49,7 +49,8 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
     text2 = StaticText(window, Rect(128, 64, 400, 400));
     express = StaticText(window, Rect(128, 64, 400, 400));
     clock =  AppClock;
-    noteAdjust = -11.7;
+    //noteAdjust = -11.7;
+    noteAdjust = 2.2;
   }
 
   playMovie {arg pathName, rate=1, pix1=1101, pix2=674, above=nil, mute=false;
@@ -76,7 +77,7 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
     }.defer;
   }
 
-  image {arg pathName, scale, above=nil;
+  image {arg pathName, scale=1, above=0;
     var pix1, pix2;
     if(movie.notNil, {this.removeMovie});
     if(picture.notNil, {this.removeImage});
@@ -161,9 +162,11 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
         case
         {item == \treble} {clef = trebleClef; adjClef = 0;}
         {item == \bass} {clef = bassClef; adjClef = -0.8;}
-        {item == \alto} {clef = altoClef; adjClef = -7;}
-        {item == \tenor} {clef = altoClef; adjClef = -17;};
-
+        //{item == \alto} {clef = altoClef; adjClef = -12;}
+//        {item == \tenor} {clef = altoClef; adjClef = -17;};
+		{item == \alto} {clef = altoClef; adjClef = 4;}
+        {item == \tenor} {clef = altoClef; adjClef = -6.5;};
+        
         if(item.notNil,
           {staffArr = staffArr.add(
             StaticText( w,
@@ -181,7 +184,8 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
         case
         {item == \treble} {fontSize = 65; fontType = "MusiSync";}
         {item == \bass} {fontSize = 50; fontType = "MusiSync";}
-        {(item == \alto).or(item == \tenor)} {fontSize = 62.5; fontType = "Sonora";};
+       // {(item == \alto).or(item == \tenor)} {fontSize = 62.5; fontType = "Sonora";};
+        {(item == \alto).or(item == \tenor)} {fontSize = 40; fontType = "PagniFIN";};
 
         if(item.notNil, {
           staffArr[index].font = Font(fontType , fontSize*resize );
@@ -290,25 +294,37 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
       oct = arrayNotes[count][1][4];
       color = arrayNotes[count][1][5];
 
-      noteBlack = 207.asAscii.asString;
-      noteWhite = 146.asAscii.asString;
-      octava = 195.asAscii.asString;
+//      noteBlack = 207.asAscii.asString;
+//      noteWhite = 146.asAscii.asString;
+//      octava = 195.asAscii.asString;
+//
+//      leasureLine = 95.asAscii.asString;
+//      sharp = 35.asAscii.asString;
+//      flat = 98.asAscii.asString;
+//      nat = 110.asAscii.asString;
+//      quince = [49,53].asAscii.asString;
 
-      leasureLine = 95.asAscii.asString;
+      noteBlack = 236.asAscii.asString;
+      noteWhite = 156.asAscii.asString;
+      octava = 204.asAscii.asString;
+
+      leasureLine = 95.asAscii.asString; //double check
       sharp = 35.asAscii.asString;
       flat = 98.asAscii.asString;
       nat = 110.asAscii.asString;
-      quince = [49,53].asAscii.asString;
+      quince = 243.asAscii.asString; //double check
 
       pos1 = 90*resize ;
       step = 35*resize;
-      penFunc = {arg symb, pos, height, colorPen= 0, fontSize=59;
+//      penFunc = {arg symb, pos, height, colorPen= 0, fontSize=59;
+      penFunc = {arg symb, pos, height, colorPen= 0, fontSize=35;
         var colFunc;
         case
         {colorPen == 0} {colFunc = Color.black}
         {colorPen == 1} {colFunc = Color.blue}
         {colorPen == 2} {colFunc = Color.red};
-        Pen.font = Font( "Sonora", fontSize*resize );
+        //Pen.font = Font( "Sonora", fontSize*resize );
+        Pen.font = Font( "PagniFIN", fontSize*resize );
         Pen.color = colFunc;
         Pen.stringAtPoint( symb,
           Point( (pos1+pos), ((noteAdjust*resize)+((5*height)+(down*resize))))) };
@@ -333,16 +349,18 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
       });};
       case
       {oct == 1} {newArray = newArray.add({
-        penFunc.value(octava, (pos*step)-(2.5*resize), (noteHeight-(2*resize)), color);
+        penFunc.value(octava, (pos*step)-(2.5*resize), (noteHeight-(4*resize)), color);
       });}
       {oct == 2} {newArray = newArray.add({
-        penFunc.value(octava, (pos*step)-(2.5*resize), (noteHeight+(6*resize)), color);
+        penFunc.value(octava, (pos*step)-(2.5*resize), (noteHeight+(5*resize)), color);
       });}
       {oct == 3} {newArray = newArray.add({
-        penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight-(1*resize)), color, 40);
+	      penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight-(4*resize)), color);
+        //penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight-(1*resize)), color, 40);
       });}
       {oct == 4} {newArray = newArray.add({
-        penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight+(6*resize)), color, 40);
+        penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight+(5*resize)), color);
+       // penFunc.value(quince, (pos*step)-(2.5*resize), (noteHeight+(6*resize)), color, 40);
       });};
 
       case
@@ -846,16 +864,19 @@ AlgorithmicScore {var <>resize, <>resize2, <>func, <>w, <>w2, <>w3, <>w4, <>w5, 
       Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
   }
 
-  expression {arg string="F", letterType="Sonora", letterSize=120, pos = 1,
-    heightAdj = 1.15, color=Color.black;
+  //expression {arg string="F", letterType="Sonora", letterSize=120, pos = 1,
+//    heightAdj = 1.15, color=Color.black;
+expression {arg string="F", letterType="PagniFIN", letterSize=70, pos = 1,
+    heightAdj = 1.3, color=Color.black;
     var sizeLetter,textWidth,textHeight, textArr,widthPos,heightPos;
     sizeLetter = letterSize*resize;
     textWidth = string.charPix(sizeLetter);
     textHeight = sizeLetter*1.25;
     textArr = w.bounds.asArray;
-    widthPos = ((35*resize*(pos-1))+(75*resize));
+    //widthPos = ((35*resize*(pos-1))+(75*resize));
+    widthPos = ((35*resize*(pos-2))+(75*resize));
     heightPos = (((textArr[3]-textHeight)/2)*heightAdj.linlin(0,2,2,0));
-    express.bounds_(Rect( widthPos, heightPos, textWidth, textHeight)).font_(
+    express.bounds_(Rect( widthPos, heightPos, textWidth*3, textHeight*3)).font_(
       Font(letterType, sizeLetter)).string_(string).stringColor_(color).align_(\centered);
   }
 

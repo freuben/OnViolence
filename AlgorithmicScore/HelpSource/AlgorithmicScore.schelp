@@ -35,6 +35,7 @@ Examples::
 code::
 
 //MusicSync: http://www.fontspace.com/robert-allgeyer/musisync (place MusicSync in Libary/Fonts)
+//PagniFIN https://elbsound.studio/download.php?f=PagniFINv.1.12.zip
 //Sonora: http://christian.texier.pagespro-orange.fr/mididesi/free/index.htm#sonora  (place Sonora.suit in Libary/Fonts)
 
 a = AlgorithmicScore(1.2);
