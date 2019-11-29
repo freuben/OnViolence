@@ -2,20 +2,20 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
   var <>score, globalMIDI, globalTimes, start, end, bufferTimes, selectPitch, buffType;
   var algoTimes, <>stepPedal, countPedalUp, countPedalDown,<>tempo=1, <>partials;
   var <percglobalTimesGlob, partialTrig=0, document, <>bufferArr, <>node, <>rightWin;
-  var clock, <motorSound, movwin, <>src, <>imageScale, <>imageAdj, movieScale;
+  var clock, <motorSound, movwin, <>recvArm, <>imageScale, <>imageAdj, movieScale;
   var movieWinScale, <>network, snapshot, <>pedalTime, pedalDownMistake, pedalUpMistake;
   var netConnect, <>rrandArray, <>muteMovie=false, <>lowSen, <>highSen, <>leftSen;
   var <>rightSen;
 
-  *score {arg headOut=0, motorOut=0, motorVol=3, panVal=0, lowVal=0, highVal=127,
-    leftVal=0, rightVal=127, src, scoreType=\macBookPro15, connect=false,
+  *score {arg headOut=0, motorOut=0, motorVol=3, panVal=0, lowVal=0.35, highVal=1.18,
+    leftVal=1.06, rightVal=0.14, recvArm, scoreType=\macBookPro15, connect=false,
     hostcomputer="tremmac56150", port;
     ^super.new.initOnViolenceScore(headOut, motorOut, motorVol, panVal, lowVal,
-      highVal, leftVal, rightVal, src, scoreType, connect, hostcomputer, port);
+      highVal, leftVal, rightVal, recvArm, scoreType, connect, hostcomputer, port);
   }
 
   initOnViolenceScore {arg outHead, outMotor, volMotor, panMotor, lowVal, highVal,
-    leftVal, rightVal, srcID, scoreType, connect, hostcomputer, port;
+    leftVal, rightVal, recvArmID, scoreType, connect, hostcomputer, port;
     var networkError, pathString, warnMsg;
     networkError = false;
     //arguments to variables
@@ -23,8 +23,9 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
     motorOut = outMotor;
     motorVol = volMotor;
     motorPan = panMotor;
-    src = srcID;
-    src ?? {src = -1927836118};
+    recvArm = recvArmID;
+    recvArm ?? {recvArm = 5432};
+    thisProcess.openUDPPort(recvArm);
     port ?? {port = NetAddr.langPort};
     s = Server.default;
     clock = AppClock;
@@ -762,21 +763,21 @@ OnViolenceScore {var <>headOut, <>motorOut, <>motorVol, <>motorPan, s, basicPath
 
   startPedals {
     //replace with other MIDI settings:
-    MIDIdef.cc(\pedal1, {arg val;
+    MIDIdef.program(\pedal1, {arg val;
       if(val == 0, {this.pedalDown});
-    }, 1, srcID: src);
+    });
 
-    MIDIdef.cc(\pedal2, {arg val;
-      if(val == 0, {this.pedalUp});
-    }, 2, srcID: src);
+    MIDIdef.program(\pedal2, {arg val;
+      if(val == 1, {this.pedalUp});
+    });
 
-    MIDIdef.cc(\sensorUp, {arg val;
-      this.sensorY(val, lowSen, highSen);
-    }, 4, srcID: src);
+    OSCdef(\sensorUp, {arg msg;
+      this.sensorY(msg[2], lowSen, highSen);
+    }, '/myo1/orientation/scaled', recvPort: recvArm);
 
-    MIDIdef.cc(\sensorSide, {arg val;
-      this.sensorX(val, leftSen, rightSen);
-    }, 5, srcID: src);
+    OSCdef(\sensorSide, {arg msg;
+      this.sensorX(msg[3], leftSen, rightSen);
+    }, '/myo1/orientation/scaled', recvPort: recvArm);
   }
 
   removePedals {
